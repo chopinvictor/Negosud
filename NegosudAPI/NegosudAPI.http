@@ -1,4 +1,4 @@
-@NegosudAPI_HostAddress = http://localhost:5244
+@NegosudAPI_HostAddress = http://localhost:5252
 
 GET {{NegosudAPI_HostAddress}}/weatherforecast/
 Accept: application/json
