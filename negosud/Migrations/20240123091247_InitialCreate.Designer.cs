@@ -11,8 +11,8 @@ using Negosud.Context;
 namespace Negosud.Migrations
 {
     [DbContext(typeof(NegosudContext))]
-    [Migration("20240111191923_init")]
-    partial class init
+    [Migration("20240123091247_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,52 +22,100 @@ namespace Negosud.Migrations
                 .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("CommandeProduit", b =>
+                {
+                    b.Property<int>("ListCommandesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ListProduitsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ListCommandesId", "ListProduitsId");
+
+                    b.HasIndex("ListProduitsId");
+
+                    b.ToTable("CommandeProduit");
+                });
+
+            modelBuilder.Entity("FournisseurProduit", b =>
+                {
+                    b.Property<int>("ListFournisseursId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ListProduitsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ListFournisseursId", "ListProduitsId");
+
+                    b.HasIndex("ListProduitsId");
+
+                    b.ToTable("FournisseurProduit");
+                });
+
             modelBuilder.Entity("Negosud.Class.Client", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("adresseClient")
+                    b.Property<string>("AdresseClient")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("codePostalClient")
+                    b.Property<int>("CodePostalClient")
                         .HasMaxLength(5)
                         .HasColumnType("int");
 
-                    b.Property<string>("emailClient")
+                    b.Property<string>("EmailClient")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<string>("nomClient")
+                    b.Property<string>("NomClient")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<string>("paysClient")
+                    b.Property<string>("PaysClient")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<string>("prenomClient")
+                    b.Property<string>("PrenomClient")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<int>("telephoneClient")
+                    b.Property<int>("TelephoneClient")
                         .HasMaxLength(12)
-                        .HasColumnType("int");
-
-                    b.Property<int>("transactionID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("transactionID");
-
                     b.ToTable("Clients");
+                });
+
+            modelBuilder.Entity("Negosud.Class.Commande", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FournisseurId")
+                        .HasColumnType("int");
+
+                    b.Property<float>("PrixTotal")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Remise")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Commande");
                 });
 
             modelBuilder.Entity("Negosud.Class.Domaine", b =>
@@ -76,20 +124,20 @@ namespace Negosud.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("adresseDomaine")
+                    b.Property<string>("AdresseDomaine")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("codePostalDomaine")
+                    b.Property<int>("CodePostalDomaine")
                         .HasMaxLength(5)
                         .HasColumnType("int");
 
-                    b.Property<string>("nomDomaine")
+                    b.Property<string>("NomDomaine")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<string>("paysDomaine")
+                    b.Property<string>("PaysDomaine")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
@@ -105,39 +153,34 @@ namespace Negosud.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("adresseFournisseur")
+                    b.Property<string>("AdresseFournisseur")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("codePostalFournisseur")
+                    b.Property<int>("CodePostalFournisseur")
                         .HasMaxLength(5)
                         .HasColumnType("int");
 
-                    b.Property<string>("emailFournisseur")
+                    b.Property<string>("EmailFournisseur")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<string>("nomFournisseur")
+                    b.Property<string>("NomFournisseur")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<string>("paysFournisseur")
+                    b.Property<string>("PaysFournisseur")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<int>("telephoneFournisseur")
+                    b.Property<int>("TelephoneFournisseur")
                         .HasMaxLength(12)
                         .HasColumnType("int");
 
-                    b.Property<int>("transactionID")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("transactionID");
 
                     b.ToTable("Fournisseurs");
                 });
@@ -148,27 +191,28 @@ namespace Negosud.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("TransactionId")
+                    b.Property<int>("DomaineID")
                         .HasColumnType("int");
 
-                    b.Property<int>("domaineID")
+                    b.Property<int>("NbProduit")
                         .HasColumnType("int");
 
-                    b.Property<string>("nomProduit")
+                    b.Property<string>("NomProduit")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<int>("typeID")
+                    b.Property<float>("PrixProduit")
+                        .HasColumnType("float");
+
+                    b.Property<int>("TypeID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TransactionId");
+                    b.HasIndex("DomaineID");
 
-                    b.HasIndex("domaineID");
-
-                    b.HasIndex("typeID");
+                    b.HasIndex("TypeID");
 
                     b.ToTable("Produits");
                 });
@@ -179,20 +223,30 @@ namespace Negosud.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("description")
+                    b.Property<int>("CommandeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<bool>("entreesortie")
+                    b.Property<bool>("EstEntreeSortie")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("nbrProduit")
+                    b.Property<int>("NbProduit")
                         .HasColumnType("int");
 
-                    b.Property<int>("remise")
+                    b.Property<int>("ProduitId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Remise")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CommandeId");
+
+                    b.HasIndex("ProduitId");
 
                     b.ToTable("Transaction");
                 });
@@ -203,7 +257,7 @@ namespace Negosud.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("nomType")
+                    b.Property<string>("NomType")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
@@ -213,22 +267,22 @@ namespace Negosud.Migrations
                     b.ToTable("Types");
                 });
 
-            modelBuilder.Entity("Negosud.Class.User", b =>
+            modelBuilder.Entity("Negosud.Class.Utilisateur", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<bool>("admin")
+                    b.Property<bool>("Admin")
                         .HasMaxLength(80)
                         .HasColumnType("tinyint(80)");
 
-                    b.Property<string>("nomUser")
+                    b.Property<string>("MotDePasse")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<string>("password")
+                    b.Property<string>("NomUtilisateur")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
@@ -238,43 +292,47 @@ namespace Negosud.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Negosud.Class.Client", b =>
+            modelBuilder.Entity("CommandeProduit", b =>
                 {
-                    b.HasOne("Negosud.Class.Transaction", "Transaction")
+                    b.HasOne("Negosud.Class.Commande", null)
                         .WithMany()
-                        .HasForeignKey("transactionID")
+                        .HasForeignKey("ListCommandesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Transaction");
+                    b.HasOne("Negosud.Class.Produit", null)
+                        .WithMany()
+                        .HasForeignKey("ListProduitsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("Negosud.Class.Fournisseur", b =>
+            modelBuilder.Entity("FournisseurProduit", b =>
                 {
-                    b.HasOne("Negosud.Class.Transaction", "Transaction")
+                    b.HasOne("Negosud.Class.Fournisseur", null)
                         .WithMany()
-                        .HasForeignKey("transactionID")
+                        .HasForeignKey("ListFournisseursId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Transaction");
+                    b.HasOne("Negosud.Class.Produit", null)
+                        .WithMany()
+                        .HasForeignKey("ListProduitsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Negosud.Class.Produit", b =>
                 {
-                    b.HasOne("Negosud.Class.Transaction", null)
-                        .WithMany("Produits")
-                        .HasForeignKey("TransactionId");
-
                     b.HasOne("Negosud.Class.Domaine", "Domaine")
                         .WithMany()
-                        .HasForeignKey("domaineID")
+                        .HasForeignKey("DomaineID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Negosud.Class.Type", "Type")
                         .WithMany()
-                        .HasForeignKey("typeID")
+                        .HasForeignKey("TypeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -285,7 +343,21 @@ namespace Negosud.Migrations
 
             modelBuilder.Entity("Negosud.Class.Transaction", b =>
                 {
-                    b.Navigation("Produits");
+                    b.HasOne("Negosud.Class.Commande", "Commande")
+                        .WithMany()
+                        .HasForeignKey("CommandeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Negosud.Class.Produit", "Produit")
+                        .WithMany()
+                        .HasForeignKey("ProduitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Commande");
+
+                    b.Navigation("Produit");
                 });
 #pragma warning restore 612, 618
         }

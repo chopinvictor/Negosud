@@ -13,34 +13,26 @@ namespace Negosud.Class
         public int Id { get; set; }
 
         [StringLength(80)]
-        public string nomClient { get; set; } = string.Empty;
+        public string NomClient { get; set; } = string.Empty;
 
         [StringLength(80)]
-        public string prenomClient { get; set; } = string.Empty;
+        public string PrenomClient { get; set; } = string.Empty;
 
-        public string adresseClient { get; set; } = string.Empty;
+        public string AdresseClient { get; set; } = string.Empty;
 
 
         [StringLength(5)]
-        public int codePostalClient { get; set; }
+        public int CodePostalClient { get; set; }
 
         [StringLength(80)]
-        public string paysClient { get; set; } = string.Empty;
+        public string PaysClient { get; set; } = string.Empty;
 
 
         [StringLength(12)]
-        public int telephoneClient { get; set; }
+        public int TelephoneClient { get; set; }
 
 
         [StringLength(80)]
-        public string emailClient { get; set; } = string.Empty;
-
-
-        // Transaction
-        [ForeignKey(nameof(Transaction))]
-        public int transactionID { get; set; }
-
-        public virtual Transaction Transaction { get; set; } = null!;
-
+        public string EmailClient { get; set; } = string.Empty;
     }
 }

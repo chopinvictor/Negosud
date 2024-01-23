@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,15 +12,22 @@ namespace Negosud.Class
     {
         public int Id { get; set; }
 
-        public int nbrProduit{ get; set; }
+        public int NbProduit{ get; set; }
 
-        public bool entreesortie { get; set; }
+        public bool EstEntreeSortie { get; set; }
 
-        public string description { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
 
-        public int remise { get; set; } // pourcentage ? exemple : 10 = 10% ?
+        public int Remise { get; set; } // pourcentage ? exemple : 10 = 10% ?
 
+        [ForeignKey(nameof(Commande))]
+        public int CommandeId { get; set; }
 
-        public ICollection<Produit> Produits { get; set; } = null!;
+        public virtual Commande Commande { get; set; } = null!;
+
+        [ForeignKey(nameof(Produit))]
+        public int ProduitId { get; set; }
+
+        public virtual Produit Produit { get; set; } = null!;
     }
 }

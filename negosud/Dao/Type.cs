@@ -13,7 +13,7 @@ namespace Negosud.Class
 
 
         [StringLength(80)]
-        public string nomType { get; set; } = string.Empty;
+        public string NomType { get; set; } = string.Empty;
 
     }
 }

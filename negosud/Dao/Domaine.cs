@@ -12,14 +12,14 @@ namespace Negosud.Class
         public int Id { get; set; }
 
         [StringLength(80)]
-        public string nomDomaine { get; set; } = string.Empty;
+        public string NomDomaine { get; set; } = string.Empty;
 
-        public string adresseDomaine { get; set; } = string.Empty;
+        public string AdresseDomaine { get; set; } = string.Empty;
 
         [StringLength(5)]
-        public int codePostalDomaine { get; set; }
+        public int CodePostalDomaine { get; set; }
 
         [StringLength(80)]
-        public string paysDomaine { get; set; } = string.Empty;
+        public string PaysDomaine { get; set; } = string.Empty;
     }
 }

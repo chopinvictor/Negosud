@@ -13,23 +13,28 @@ namespace Negosud.Class
         public int Id { get; set; }
 
         [StringLength(80)]
-        public string nomProduit { get; set; } = string.Empty;
+        public string NomProduit { get; set; } = string.Empty;
 
+        public int NbProduit { get; set; }
 
+        public float PrixProduit { get; set; }
 
         // Type
         [ForeignKey(nameof(Type))]
-        public int typeID { get; set; }
+        public int TypeID { get; set; }
 
         public virtual Type Type { get; set; } = null!;
 
-
-
         // Domaine
         [ForeignKey(nameof(Domaine))]
-        public int domaineID { get; set; }
+        public int DomaineID { get; set; }
 
         public virtual Domaine Domaine { get; set; } = null!;
-
+        
+        // Commandes
+        public virtual List<Commande>? ListCommandes { get; set; } = null!;
+        
+        // Fournisseurs
+        public virtual List<Fournisseur>? ListFournisseurs { get; set; } = null!;
     }
 }

@@ -19,7 +19,7 @@ namespace Negosud.Context
 
         public DbSet<Fournisseur> Fournisseurs { get; set; }
 
-        public DbSet<User> Users { get; set; }
+        public DbSet<Utilisateur> Users { get; set; }
 
 
         //Configuration à la base de données MySql
