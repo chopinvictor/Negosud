@@ -21,6 +21,8 @@ namespace Negosud.Context
 
         public DbSet<Utilisateur> Users { get; set; }
 
+        public DbSet<Commande> Commandes { get; set; }
+
 
         //Configuration à la base de données MySql
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
