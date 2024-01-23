@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
@@ -26,10 +27,12 @@ namespace Negosud.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     AdresseClient = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CodePostalClient = table.Column<int>(type: "int", maxLength: 5, nullable: false),
+                    CodePostalClient = table.Column<string>(type: "varchar(5)", maxLength: 5, nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     PaysClient = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    TelephoneClient = table.Column<int>(type: "int", maxLength: 12, nullable: false),
+                    TelephoneClient = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     EmailClient = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
@@ -40,19 +43,21 @@ namespace Negosud.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Commande",
+                name: "Commandes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PrixTotal = table.Column<float>(type: "float", nullable: false),
+                    PrixTotal = table.Column<double>(type: "double", nullable: true),
+                    EstEntreeSortie = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    DateCommande = table.Column<DateTime>(type: "datetime(6)", nullable: false),
                     Remise = table.Column<int>(type: "int", nullable: false),
                     FournisseurId = table.Column<int>(type: "int", nullable: true),
                     ClientId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Commande", x => x.Id);
+                    table.PrimaryKey("PK_Commandes", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -66,7 +71,8 @@ namespace Negosud.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     AdresseDomaine = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CodePostalDomaine = table.Column<int>(type: "int", maxLength: 5, nullable: false),
+                    CodePostalDomaine = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     PaysDomaine = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
@@ -86,10 +92,12 @@ namespace Negosud.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     AdresseFournisseur = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CodePostalFournisseur = table.Column<int>(type: "int", maxLength: 5, nullable: false),
+                    CodePostalFournisseur = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     PaysFournisseur = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    TelephoneFournisseur = table.Column<int>(type: "int", maxLength: 12, nullable: false),
+                    TelephoneFournisseur = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     EmailFournisseur = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
                 },
@@ -141,7 +149,7 @@ namespace Negosud.Migrations
                     NomProduit = table.Column<string>(type: "varchar(80)", maxLength: 80, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     NbProduit = table.Column<int>(type: "int", nullable: false),
-                    PrixProduit = table.Column<float>(type: "float", nullable: false),
+                    PrixProduit = table.Column<double>(type: "double", nullable: false),
                     TypeID = table.Column<int>(type: "int", nullable: false),
                     DomaineID = table.Column<int>(type: "int", nullable: false)
                 },
@@ -174,9 +182,9 @@ namespace Negosud.Migrations
                 {
                     table.PrimaryKey("PK_CommandeProduit", x => new { x.ListCommandesId, x.ListProduitsId });
                     table.ForeignKey(
-                        name: "FK_CommandeProduit_Commande_ListCommandesId",
+                        name: "FK_CommandeProduit_Commandes_ListCommandesId",
                         column: x => x.ListCommandesId,
-                        principalTable: "Commande",
+                        principalTable: "Commandes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -189,24 +197,29 @@ namespace Negosud.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "FournisseurProduit",
+                name: "Historique",
                 columns: table => new
                 {
-                    ListFournisseursId = table.Column<int>(type: "int", nullable: false),
-                    ListProduitsId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    PrixAchat = table.Column<double>(type: "double", nullable: false),
+                    DateD = table.Column<DateTime>(type: "datetime(6)", nullable: false),
+                    DateF = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    ProduitId = table.Column<int>(type: "int", nullable: false),
+                    FournisseurId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FournisseurProduit", x => new { x.ListFournisseursId, x.ListProduitsId });
+                    table.PrimaryKey("PK_Historique", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FournisseurProduit_Fournisseurs_ListFournisseursId",
-                        column: x => x.ListFournisseursId,
+                        name: "FK_Historique_Fournisseurs_FournisseurId",
+                        column: x => x.FournisseurId,
                         principalTable: "Fournisseurs",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FournisseurProduit_Produits_ListProduitsId",
-                        column: x => x.ListProduitsId,
+                        name: "FK_Historique_Produits_ProduitId",
+                        column: x => x.ProduitId,
                         principalTable: "Produits",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -214,14 +227,13 @@ namespace Negosud.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Transaction",
+                name: "Transactions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     NbProduit = table.Column<int>(type: "int", nullable: false),
-                    EstEntreeSortie = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Description = table.Column<string>(type: "longtext", nullable: false)
+                    Description = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Remise = table.Column<int>(type: "int", nullable: false),
                     CommandeId = table.Column<int>(type: "int", nullable: false),
@@ -229,15 +241,15 @@ namespace Negosud.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Transaction", x => x.Id);
+                    table.PrimaryKey("PK_Transactions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Transaction_Commande_CommandeId",
+                        name: "FK_Transactions_Commandes_CommandeId",
                         column: x => x.CommandeId,
-                        principalTable: "Commande",
+                        principalTable: "Commandes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Transaction_Produits_ProduitId",
+                        name: "FK_Transactions_Produits_ProduitId",
                         column: x => x.ProduitId,
                         principalTable: "Produits",
                         principalColumn: "Id",
@@ -251,9 +263,14 @@ namespace Negosud.Migrations
                 column: "ListProduitsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FournisseurProduit_ListProduitsId",
-                table: "FournisseurProduit",
-                column: "ListProduitsId");
+                name: "IX_Historique_FournisseurId",
+                table: "Historique",
+                column: "FournisseurId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Historique_ProduitId",
+                table: "Historique",
+                column: "ProduitId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produits_DomaineID",
@@ -266,13 +283,13 @@ namespace Negosud.Migrations
                 column: "TypeID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transaction_CommandeId",
-                table: "Transaction",
+                name: "IX_Transactions_CommandeId",
+                table: "Transactions",
                 column: "CommandeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Transaction_ProduitId",
-                table: "Transaction",
+                name: "IX_Transactions_ProduitId",
+                table: "Transactions",
                 column: "ProduitId");
         }
 
@@ -286,10 +303,10 @@ namespace Negosud.Migrations
                 name: "CommandeProduit");
 
             migrationBuilder.DropTable(
-                name: "FournisseurProduit");
+                name: "Historique");
 
             migrationBuilder.DropTable(
-                name: "Transaction");
+                name: "Transactions");
 
             migrationBuilder.DropTable(
                 name: "Users");
@@ -298,7 +315,7 @@ namespace Negosud.Migrations
                 name: "Fournisseurs");
 
             migrationBuilder.DropTable(
-                name: "Commande");
+                name: "Commandes");
 
             migrationBuilder.DropTable(
                 name: "Produits");

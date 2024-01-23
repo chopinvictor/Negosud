@@ -1,21 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Negosud.Class;
-using System.Collections.Generic;
 using Type = Negosud.Class.Type;
 
 namespace Negosud.Context
 {
-    public class NegosudContext: DbContext
+    public class NegosudContext : DbContext
     {
-        public DbSet<Produit> Produits { get; set;}
+        public DbSet<Produit> Produits { get; set; }
 
-        public DbSet<Type> Types { get; set;}
+        public DbSet<Type> Types { get; set; }
 
         public DbSet<Client> Clients { get; set; }
 
         public DbSet<Domaine> Domaines { get; set; }
 
-        public DbSet<Transaction> Transaction { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
         public DbSet<Fournisseur> Fournisseurs { get; set; }
 

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Negosud.Class
 {
@@ -22,15 +16,12 @@ namespace Negosud.Class
 
 
         [StringLength(5)]
-        public int CodePostalClient { get; set; }
+        public string CodePostalClient { get; set; } = string.Empty;
 
         [StringLength(80)]
         public string PaysClient { get; set; } = string.Empty;
 
-
-        [StringLength(12)]
-        public int TelephoneClient { get; set; }
-
+        public string TelephoneClient { get; set; } = string.Empty;
 
         [StringLength(80)]
         public string EmailClient { get; set; } = string.Empty;

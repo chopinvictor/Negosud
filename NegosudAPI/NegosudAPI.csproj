@@ -21,4 +21,8 @@
     <ProjectReference Include="..\negosud\Negosud.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

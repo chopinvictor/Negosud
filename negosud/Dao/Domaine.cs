@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Negosud.Class
 {
@@ -16,8 +11,7 @@ namespace Negosud.Class
 
         public string AdresseDomaine { get; set; } = string.Empty;
 
-        [StringLength(5)]
-        public int CodePostalDomaine { get; set; }
+        public string CodePostalDomaine { get; set; } = string.Empty;
 
         [StringLength(80)]
         public string PaysDomaine { get; set; } = string.Empty;

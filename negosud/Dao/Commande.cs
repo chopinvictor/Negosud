@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Negosud.Class
 {
@@ -12,7 +6,11 @@ namespace Negosud.Class
     {
         public int Id { get; set; }
 
-        public float PrixTotal { get; set; }
+        public double? PrixTotal { get; set; }
+
+        public bool EstEntreeSortie { get; set; }
+
+        public DateTime DateCommande { get; set; }
 
         public int Remise { get; set; } // pourcentage ? exemple : 10 = 10% ?
 
@@ -23,6 +21,5 @@ namespace Negosud.Class
         public int? ClientId { get; set; }
 
         public virtual List<Produit>? ListProduits { get; set; } = null!;
-
     }
 }

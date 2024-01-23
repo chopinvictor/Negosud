@@ -34,21 +34,6 @@ namespace Negosud.Migrations
                     b.ToTable("CommandeProduit");
                 });
 
-            modelBuilder.Entity("FournisseurProduit", b =>
-                {
-                    b.Property<int>("ListFournisseursId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ListProduitsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ListFournisseursId", "ListProduitsId");
-
-                    b.HasIndex("ListProduitsId");
-
-                    b.ToTable("FournisseurProduit");
-                });
-
             modelBuilder.Entity("Negosud.Class.Client", b =>
                 {
                     b.Property<int>("Id")
@@ -59,9 +44,10 @@ namespace Negosud.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("CodePostalClient")
+                    b.Property<string>("CodePostalClient")
+                        .IsRequired()
                         .HasMaxLength(5)
-                        .HasColumnType("int");
+                        .HasColumnType("varchar(5)");
 
                     b.Property<string>("EmailClient")
                         .IsRequired()
@@ -83,9 +69,9 @@ namespace Negosud.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<int>("TelephoneClient")
-                        .HasMaxLength(12)
-                        .HasColumnType("int");
+                    b.Property<string>("TelephoneClient")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -101,11 +87,17 @@ namespace Negosud.Migrations
                     b.Property<int?>("ClientId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("DateCommande")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("EstEntreeSortie")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int?>("FournisseurId")
                         .HasColumnType("int");
 
-                    b.Property<float>("PrixTotal")
-                        .HasColumnType("float");
+                    b.Property<double?>("PrixTotal")
+                        .HasColumnType("double");
 
                     b.Property<int>("Remise")
                         .HasColumnType("int");
@@ -125,9 +117,9 @@ namespace Negosud.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("CodePostalDomaine")
-                        .HasMaxLength(5)
-                        .HasColumnType("int");
+                    b.Property<string>("CodePostalDomaine")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("NomDomaine")
                         .IsRequired()
@@ -154,9 +146,9 @@ namespace Negosud.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("CodePostalFournisseur")
-                        .HasMaxLength(5)
-                        .HasColumnType("int");
+                    b.Property<string>("CodePostalFournisseur")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<string>("EmailFournisseur")
                         .IsRequired()
@@ -173,13 +165,43 @@ namespace Negosud.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<int>("TelephoneFournisseur")
-                        .HasMaxLength(12)
-                        .HasColumnType("int");
+                    b.Property<string>("TelephoneFournisseur")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
                     b.ToTable("Fournisseurs");
+                });
+
+            modelBuilder.Entity("Negosud.Class.Historique", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateD")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DateF")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("FournisseurId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("PrixAchat")
+                        .HasColumnType("double");
+
+                    b.Property<int>("ProduitId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FournisseurId");
+
+                    b.HasIndex("ProduitId");
+
+                    b.ToTable("Historique");
                 });
 
             modelBuilder.Entity("Negosud.Class.Produit", b =>
@@ -199,8 +221,8 @@ namespace Negosud.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<float>("PrixProduit")
-                        .HasColumnType("float");
+                    b.Property<double>("PrixProduit")
+                        .HasColumnType("double");
 
                     b.Property<int>("TypeID")
                         .HasColumnType("int");
@@ -224,11 +246,7 @@ namespace Negosud.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<bool>("EstEntreeSortie")
-                        .HasColumnType("tinyint(1)");
 
                     b.Property<int>("NbProduit")
                         .HasColumnType("int");
@@ -245,7 +263,7 @@ namespace Negosud.Migrations
 
                     b.HasIndex("ProduitId");
 
-                    b.ToTable("Transaction");
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("Negosud.Class.Type", b =>
@@ -304,17 +322,17 @@ namespace Negosud.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("FournisseurProduit", b =>
+            modelBuilder.Entity("Negosud.Class.Historique", b =>
                 {
                     b.HasOne("Negosud.Class.Fournisseur", null)
-                        .WithMany()
-                        .HasForeignKey("ListFournisseursId")
+                        .WithMany("ListHistorique")
+                        .HasForeignKey("FournisseurId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Negosud.Class.Produit", null)
-                        .WithMany()
-                        .HasForeignKey("ListProduitsId")
+                        .WithMany("ListHistorique")
+                        .HasForeignKey("ProduitId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -355,6 +373,16 @@ namespace Negosud.Migrations
                     b.Navigation("Commande");
 
                     b.Navigation("Produit");
+                });
+
+            modelBuilder.Entity("Negosud.Class.Fournisseur", b =>
+                {
+                    b.Navigation("ListHistorique");
+                });
+
+            modelBuilder.Entity("Negosud.Class.Produit", b =>
+                {
+                    b.Navigation("ListHistorique");
                 });
 #pragma warning restore 612, 618
         }

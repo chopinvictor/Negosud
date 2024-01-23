@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Negosud.Class
 {
@@ -17,19 +11,17 @@ namespace Negosud.Class
 
         public string AdresseFournisseur { get; set; } = string.Empty;
 
-        [StringLength(5)]
-        public int CodePostalFournisseur { get; set; }
+        public string CodePostalFournisseur { get; set; } = string.Empty;
 
         [StringLength(80)]
         public string PaysFournisseur { get; set; } = string.Empty;
 
-        [StringLength(12)]
-        public int TelephoneFournisseur { get; set; }
+        public string TelephoneFournisseur { get; set; } = string.Empty;
 
         [StringLength(80)]
         public string EmailFournisseur { get; set; } = string.Empty;
 
-        public virtual List<Produit>? ListProduits { get; set; } = null!;
+        public virtual List<Historique>? ListHistorique { get; set; } = null!;
 
     }
 }
