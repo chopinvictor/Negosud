@@ -22,6 +22,8 @@ namespace Negosud.Context
 
         public DbSet<Commande> Commandes { get; set; }
 
+        public DbSet<Historique> Historiques { get; set; }
+
 
         //Configuration à la base de données MySql
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
