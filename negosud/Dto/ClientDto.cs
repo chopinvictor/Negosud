@@ -11,18 +11,18 @@ namespace Negosud.Dto
     {
         public int Id { get; set; }
 
-        public string NomClient { get; set; }
+        public string Nom { get; set; }
 
-        public string PrenomClient { get; set; }
+        public string Prenom { get; set; }
 
-        public string AdresseClient { get; set; }
+        public string Adresse { get; set; }
 
-        public string CodePostalClient { get; set; }
+        public string CodePostal { get; set; }
 
-        public string PaysClient { get; set; }
+        public string Pays { get; set; }
 
-        public string TelephoneClient { get; set; }
+        public string Telephone { get; set; }
 
-        public string EmailClient { get; set; }
+        public string Email { get; set; }
     }
 }

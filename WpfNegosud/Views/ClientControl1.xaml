@@ -86,13 +86,13 @@
 
                 </Grid.RowDefinitions>
 
-                <TextBlock  Grid.Row="1" Grid.Column="1" Text="Nom"/>
-                <TextBlock  Grid.Row="3" Grid.Column="1" Text="Prenom"/>
-                <TextBlock  Grid.Row="5" Grid.Column="1" Text="Adresse"/>
-                <TextBlock  Grid.Row="7" Grid.Column="1" Text="Code postal"/>
-                <TextBlock  Grid.Row="9" Grid.Column="1" Text="Pays"/>
-                <TextBlock  Grid.Row="11" Grid.Column="1" Text="Email"/>
-                <TextBlock  Grid.Row="13" Grid.Column="1" Text="Telephone"/>
+                <TextBlock  Grid.Row="1" Grid.Column="1" Text="{Binding Client.Nom}"/>
+                <TextBlock  Grid.Row="3" Grid.Column="1" Text="{Binding Client.Prenom}"/>
+                <TextBlock  Grid.Row="5" Grid.Column="1" Text="{Binding Client.Adresse}"/>
+                <TextBlock  Grid.Row="7" Grid.Column="1" Text="{Binding Client.CodePostal}"/>
+                <TextBlock  Grid.Row="9" Grid.Column="1" Text="{Binding Client.Pays}"/>
+                <TextBlock  Grid.Row="11" Grid.Column="1" Text="{Binding Client.Telephone}"/>
+                <TextBlock  Grid.Row="13" Grid.Column="1" Text="{Binding Client.Email}"/>
             </Grid>
 
         </StackPanel>

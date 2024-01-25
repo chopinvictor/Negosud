@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Negosud.Class;
+using NegosudWpf.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,9 @@ namespace NegosudWpf.Views
         public ClientControl1()
         {
             InitializeComponent();
+            var vm = (ClientsViewModel)this.DataContext;
+            vm.GetClient(1);
         }
+
     }
 }

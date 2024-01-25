@@ -7,6 +7,18 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
+        <Menu Grid.Row="0">
+            <MenuItem Header="Produits" Click="MenuProduits_Click"/>
+            <MenuItem Header="Clients" Click="MenuClients_Click" />
+        </Menu>
+
+        <ContentControl Name="MainCC" Grid.Row="1">
+
+        </ContentControl>
     </Grid>
 </Window>

@@ -1,4 +1,6 @@
 ﻿using Negosud.Class;
+using Negosud.Dto;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,17 @@ namespace NegosudWpf.Services
             }
         }
 
-        public static async Task<ClientDto>
+        public static async Task<ClientDto> GetClient(int clientId)
+        {
+            string route = $"clients/{clientId}";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string resultat = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ClientDto>(resultat)
+                    ?? throw new FormatException($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
     }
 }
