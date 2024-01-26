@@ -1,6 +1,4 @@
-﻿using Negosud.Class;
-using NegosudWpf.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,14 +16,13 @@ using System.Windows.Shapes;
 namespace NegosudWpf.Views
 {
     /// <summary>
-    /// Logique d'interaction pour ClientControl1.xaml
+    /// Logique d'interaction pour ucClientsList.xaml
     /// </summary>
-    public partial class ClientControl1 : UserControl
+    public partial class ucClientsList : UserControl
     {
-        public ClientControl1()
+        public ucClientsList()
         {
             InitializeComponent();
         }
-
     }
 }

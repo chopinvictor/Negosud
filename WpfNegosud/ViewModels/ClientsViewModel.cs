@@ -1,22 +1,31 @@
-﻿using Negosud.Dto;
+﻿using Negosud.Class;
 using NegosudWpf.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace NegosudWpf.ViewModels
 {
     public class ClientsViewModel : BaseViewModel
     {
-        public ClientDto Client { get; set; }
-        
-        public List<ClientDto> Clients { get; set; }
+        public Client Client { get; set; }
+
+        public ObservableCollection<Client> ListeClients { get; set; }
+
+        public ClientsViewModel()
+        {
+            GetClient(1);
+            test();
+        }
 
         public async void GetClient(int clientId)
         {
             Client = await HttpClientService.GetClient(clientId);
+            OnPropertyChanged(nameof(Client));
+        }
+
+        public async Task test()
+        {
+            ListeClients = await HttpClientService.GetAllClients();
+            OnPropertyChanged(nameof(ListeClients));
         }
     }
 }

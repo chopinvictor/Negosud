@@ -1,4 +1,5 @@
-﻿using NegosudWpf.ViewModels;
+﻿using Negosud.Dto;
+using NegosudWpf.ViewModels;
 using NegosudWpf.Views;
 using System.Windows;
 
@@ -23,7 +24,9 @@ namespace WpfNegosud
 
         private void MenuProduits_Click(object sender, RoutedEventArgs e)
         {
-
+            var uc = new ucClientsList();
+            uc.DataContext = new ClientsViewModel();
+            MainCC.Content = uc;
         }
     }
 }
