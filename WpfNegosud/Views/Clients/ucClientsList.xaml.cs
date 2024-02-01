@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Negosud.Class;
+using NegosudWpf.ViewModels;
+using NegosudWpf.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,15 @@ namespace NegosudWpf.Views
         public ucClientsList()
         {
             InitializeComponent();
+        }
+
+        private void ClientDetails_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            MainViewModel.Instance.ChargerClient(((Client)btn.DataContext).Id);
+
+            ClientDetailsPopup clientDetailsPopup = new ClientDetailsPopup();
+            clientDetailsPopup.Show();
         }
     }
 }

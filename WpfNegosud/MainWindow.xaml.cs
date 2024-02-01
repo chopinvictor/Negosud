@@ -13,20 +13,7 @@ namespace WpfNegosud
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void MenuClients_Click(object sender, RoutedEventArgs e)
-        {
-            var uc = new ClientControl1();
-            uc.DataContext = new ClientsViewModel();
-            MainCC.Content = uc;
-        }
-
-        private void MenuProduits_Click(object sender, RoutedEventArgs e)
-        {
-            var uc = new ucClientsList();
-            uc.DataContext = new ClientsViewModel();
-            MainCC.Content = uc;
+            this.DataContext = MainViewModel.Instance;
         }
     }
 }

@@ -12,8 +12,7 @@ namespace NegosudWpf.ViewModels
 
         public ClientsViewModel()
         {
-            GetClient(1);
-            test();
+            GetAllClients();
         }
 
         public async void GetClient(int clientId)
@@ -22,7 +21,7 @@ namespace NegosudWpf.ViewModels
             OnPropertyChanged(nameof(Client));
         }
 
-        public async Task test()
+        public async Task GetAllClients()
         {
             ListeClients = await HttpClientService.GetAllClients();
             OnPropertyChanged(nameof(ListeClients));

@@ -10,6 +10,8 @@ namespace Negosud.Class
 
         public string? Description { get; set; } = string.Empty;
 
+        public double Prix { get; set; }
+
         public int Remise { get; set; } // pourcentage ? exemple : 10 = 10% ?
 
         [ForeignKey(nameof(Commande))]

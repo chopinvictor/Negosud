@@ -14,6 +14,7 @@ namespace Negosud.Class
 
         public string AdresseClient { get; set; } = string.Empty;
 
+        public string VilleClient { get; set; } = string.Empty;
 
         [StringLength(5)]
         public string CodePostalClient { get; set; } = string.Empty;

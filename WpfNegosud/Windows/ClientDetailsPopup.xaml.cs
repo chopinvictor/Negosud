@@ -1,6 +1,4 @@
-﻿using Negosud.Class;
-using NegosudWpf.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,20 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NegosudWpf.Views
+namespace NegosudWpf.Windows
 {
     /// <summary>
-    /// Logique d'interaction pour ClientControl1.xaml
+    /// Logique d'interaction pour ClientDetailsPopup.xaml
     /// </summary>
-    public partial class ClientControl1 : UserControl
+    public partial class ClientDetailsPopup : Window
     {
-        public ClientControl1()
+        public ClientDetailsPopup()
         {
             InitializeComponent();
         }
 
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.ChangedButton == MouseButton.Left)
+            {
+                DragMove();
+            }
+        }
     }
 }

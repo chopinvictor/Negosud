@@ -5,31 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NegosudWpf.Views.Shared"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="185*"/>
-            <RowDefinition Height="113*"/>
-            <RowDefinition Height="113*"/>
-        </Grid.RowDefinitions>
-        <Button Grid.Row="0" Grid.Column="0" Content="Negosud" Margin="0,0,0,185" Grid.RowSpan="2"/>
-        <Button Grid.Row="0" Grid.Column="1" Content="Stock" Margin="0,0,0,185" Grid.RowSpan="2"/>
-        <Button Grid.Row="0" Grid.Column="2" Content="Clients" Margin="0,0,0,185" Grid.RowSpan="2"/>
-        <Button Grid.Row="0" Grid.Column="3" Content="Fournisseurs" Margin="0,0,0,185" Grid.RowSpan="2"/>
-        <Button Grid.Row="0" Grid.Column="4" Content="Vente" Margin="0,0,0,185" Grid.RowSpan="2"/>
-        <Button Grid.Row="0" Grid.Column="5" Content="Employés" Margin="0,0,0,185" Grid.RowSpan="2"/>
-        <Button Grid.Row="0" Grid.Column="7" Content="Deconnexion" Margin="0,0,0,185" Grid.RowSpan="2"/>
-    </Grid>
+             d:DesignHeight="50" Width="Auto">
+    <Menu>
+        <StackPanel Orientation="Horizontal">
+            <Image Source="/asset/LogoNegoSudRouge.png" Width="30" Height="30"/>
+            <TextBlock VerticalAlignment="Center" Text="Negosud"/>
+        </StackPanel>
+        <MenuItem Header="Stock" />
+        <MenuItem Header="Clients" Click="MenuClients_Click" />
+        <MenuItem Header="Fournisseurs" />
+        <MenuItem Header="Vente" />
+    </Menu>
 </UserControl>
