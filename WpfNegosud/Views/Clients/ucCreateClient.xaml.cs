@@ -1,29 +1,36 @@
 ﻿using Negosud.Class;
 using NegosudWpf.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace NegosudWpf.Views
+namespace NegosudWpf.Views.Clients
 {
     /// <summary>
-    /// Logique d'interaction pour ClientControl1.xaml
+    /// Logique d'interaction pour ucCreateClient.xaml
     /// </summary>
-    public partial class ucClientControl : UserControl
+    public partial class ucCreateClient : UserControl
     {
-        public Client Client = new Client();
-
-        public int ClientId { get; set; }
-
-        public ucClientControl()
+        public ucCreateClient()
         {
             InitializeComponent();
         }
-        private void UpdateClientValidation_Click(object sender, RoutedEventArgs e)
+
+        private void CreateClientValidation_Click(object sender, RoutedEventArgs e)
         {
             var client = new Client()
             {
-                Id = ClientId,
                 NomClient = Nom.Text,
                 PrenomClient = Prenom.Text,
                 AdresseClient = Adresse.Text,
@@ -33,12 +40,8 @@ namespace NegosudWpf.Views
                 PaysClient = Pays.Text,
                 TelephoneClient = Tel.Text
             };
-            ClientsViewModel.Instance.UpdateClient(client);
-        }
 
-        private void DeleteClient_Click(object sender, RoutedEventArgs e)
-        {
-            ClientsViewModel.Instance.DeleteClient(ClientId);
+            ClientsViewModel.Instance.CreateClient(client);
         }
     }
 }

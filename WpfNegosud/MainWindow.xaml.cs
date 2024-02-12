@@ -1,6 +1,4 @@
-﻿using Negosud.Dto;
-using NegosudWpf.ViewModels;
-using NegosudWpf.Views;
+﻿using NegosudWpf.ViewModels;
 using System.Windows;
 
 namespace WpfNegosud

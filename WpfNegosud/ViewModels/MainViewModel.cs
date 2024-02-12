@@ -26,12 +26,20 @@ namespace NegosudWpf.ViewModels
             var uc = new ucClientControl();
             uc.DataContext = new ClientsViewModel();
             ((ClientsViewModel)uc.DataContext).GetClient(clientId);
+            uc.ClientId = clientId;
             UserControl = uc;
         }
 
         public void ChargerClientList()
         {
             var uc = new ucClientsList();
+            uc.DataContext = new ClientsViewModel();
+            UserControl = uc;
+        }
+
+        public void CreateClient()
+        {
+            var uc = new ucClientControl();
             uc.DataContext = new ClientsViewModel();
             UserControl = uc;
         }
