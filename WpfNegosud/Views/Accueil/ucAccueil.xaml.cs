@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NegosudWpf.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace NegosudWpf.Views.Accueil
         public ucAccueil()
         {
             InitializeComponent();
+        }
+
+
+        private void MenuFournisseurs_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerFournisseurList();
+
         }
     }
 }

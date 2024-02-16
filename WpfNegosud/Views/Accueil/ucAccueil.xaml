@@ -46,7 +46,7 @@
                 <Button Background="#F4A261" Grid.Row="2" Grid.Column="0">Clients</Button>
                 <Button Background="#F4A261" Grid.Row="2" Grid.Column="2">Vente</Button>
                 <Image Source="/asset/LogoNegoSudRouge.png" Grid.Row="0" Margin="45,-108,50,12" Grid.ColumnSpan="3" Grid.Column="1" Grid.RowSpan="2"/>
-                <Button Background="#F4A261" Grid.Row="2" Grid.Column="4">Fournisseurs</Button>
+                <Button Background="#F4A261" Grid.Row="2" Grid.Column="4" Click="MenuFournisseurs_Click">Fournisseurs</Button>
                 <Button Background="#F4A261" Grid.Row="0" Grid.Column="4">Employés</Button>
             </Grid>
 

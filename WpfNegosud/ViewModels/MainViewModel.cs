@@ -1,5 +1,7 @@
 ﻿using Negosud.Class;
 using NegosudWpf.Views;
+using NegosudWpf.Views.Accueil;
+using NegosudWpf.Views.Clients;
 using NegosudWpf.Views.Fournisseurs;
 using System.Windows.Controls;
 
@@ -23,6 +25,15 @@ namespace NegosudWpf.ViewModels
             set { userControl = value; OnPropertyChanged(); }
         }
 
+
+        // Accueil
+        public void ChargerAccueil()
+        {
+            var uc = new ucAccueil();
+            UserControl = uc;
+        }
+
+
         // Clients
         public void ChargerClient(int clientId)
         {
@@ -42,7 +53,7 @@ namespace NegosudWpf.ViewModels
 
         public void CreateClient()
         {
-            var uc = new ucClientControl();
+            var uc = new ucCreateClient();
             uc.DataContext = new ClientsViewModel();
             UserControl = uc;
         }
