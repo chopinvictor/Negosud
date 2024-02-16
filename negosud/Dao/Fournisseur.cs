@@ -13,6 +13,8 @@ namespace Negosud.Class
 
         public string CodePostalFournisseur { get; set; } = string.Empty;
 
+        public string VilleFournisseur { get; set; } = string.Empty;
+
         [StringLength(80)]
         public string PaysFournisseur { get; set; } = string.Empty;
 

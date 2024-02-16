@@ -1,4 +1,6 @@
-﻿using NegosudWpf.Views;
+﻿using Negosud.Class;
+using NegosudWpf.Views;
+using NegosudWpf.Views.Fournisseurs;
 using System.Windows.Controls;
 
 namespace NegosudWpf.ViewModels
@@ -21,6 +23,7 @@ namespace NegosudWpf.ViewModels
             set { userControl = value; OnPropertyChanged(); }
         }
 
+        // Clients
         public void ChargerClient(int clientId)
         {
             var uc = new ucClientControl();
@@ -66,6 +69,23 @@ namespace NegosudWpf.ViewModels
         {
             var uc = new ucProduitControl();
             uc.DataContext = new ProduitsViewModel();
+            UserControl = uc;
+        }
+
+
+        // Fournisseurs
+        public void ChargerFournisseurList()
+        {
+            var uc = new ucFournisseursList();
+            uc.DataContext = new FournisseursViewModel();
+            UserControl = uc;
+        }
+
+        public void ChargerFournisseur(int fournisseurId)
+        {
+            var uc = new ucAddFournisseur();
+            uc.DataContext = new FournisseursViewModel();
+            ((FournisseursViewModel)uc.DataContext).GetFournisseur(fournisseurId);
             UserControl = uc;
         }
     }

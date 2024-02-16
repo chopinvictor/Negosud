@@ -14,6 +14,8 @@ namespace Negosud.Class
 
         public double PrixProduit { get; set; }
 
+        public int Quantite { get; set; }
+
         // Type
         [ForeignKey(nameof(Type))]
         public int TypeID { get; set; }

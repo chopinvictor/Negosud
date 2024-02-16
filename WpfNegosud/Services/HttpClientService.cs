@@ -30,6 +30,7 @@ namespace NegosudWpf.Services
             }
         }
 
+        // Client
         public static async Task<Client> GetClient(int clientId)
         {
             string route = $"Clients/{clientId}";
@@ -175,6 +176,33 @@ namespace NegosudWpf.Services
             {
                 throw new Exception($"{response.ReasonPhrase}");
             }
+        }
+
+       // Fournisseur
+        public static async Task<Fournisseur> GetFournisseur(int fournisseurId)
+        {
+            string route = $"Fournisseurs/{fournisseurId}";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string resultat = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Fournisseur>(resultat)
+                    ?? throw new FormatException($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task<ObservableCollection<Fournisseur>> GetAllFournisseurs()
+        {
+            string route = $"Fournisseurs";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ObservableCollection<Fournisseur>>(result)
+                ?? throw new Exception($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
         }
 
         #endregion

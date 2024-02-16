@@ -9,19 +9,22 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\Clients\ucClientControl.xaml.cs">
+    <Compile Update="Views\Accueil\ucAccueil.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Fournisseurs\ucAddFournisseur.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Fournisseurs\ucFournisseursList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\produit\ucProduit.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Clients\ucCreateClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Shared\NavBar.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\Clients\ucClientsList.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Windows\ClientDetailsPopup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -39,18 +42,22 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Clients\ucClientControl.xaml">
+    <Page Update="Views\Accueil\ucAccueil.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Fournisseurs\ucAddFournisseur.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Fournisseurs\ucFournisseursList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\produit\ucProduit.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Clients\ucCreateClient.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Shared\NavBar.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\Clients\ucClientsList.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Windows\ClientDetailsPopup.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

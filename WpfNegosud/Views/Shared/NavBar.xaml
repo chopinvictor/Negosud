@@ -13,7 +13,7 @@
         </StackPanel>
         <MenuItem Header="Stock" Click="MenuProduits_Click" />
         <MenuItem Header="Clients" Click="MenuClients_Click" />
-        <MenuItem Header="Fournisseurs" />
+        <MenuItem Header="Fournisseurs" Click="MenuFournisseurs_Click" />
         <MenuItem Header="Vente" />
     </Menu>
 </UserControl>

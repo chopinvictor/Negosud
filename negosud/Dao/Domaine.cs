@@ -11,6 +11,8 @@ namespace Negosud.Class
 
         public string AdresseDomaine { get; set; } = string.Empty;
 
+        public string VilleDomaine { get; set; } = string.Empty;
+
         public string CodePostalDomaine { get; set; } = string.Empty;
 
         [StringLength(80)]

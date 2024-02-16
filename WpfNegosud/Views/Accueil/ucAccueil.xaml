@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="NegosudWpf.Views.Accueil.ucAccueil"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NegosudWpf.Views.Accueil"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="45"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Button Grid.Column="1" Grid.Row="1" Content="Deconnexion" Margin="535,0,0,0"/>
+
+
+        <StackPanel Grid.Row="3" Grid.Column="1">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="170"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="170"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="170"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="140"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="140"/>
+                </Grid.RowDefinitions>
+
+                <Button Background="#F4A261" Grid.Row="0" Grid.Column="0" >Stock</Button>
+                <Button Background="#F4A261" Grid.Row="2" Grid.Column="0">Clients</Button>
+                <Button Background="#F4A261" Grid.Row="2" Grid.Column="2">Vente</Button>
+                <Image Source="/asset/LogoNegoSudRouge.png" Grid.Row="0" Margin="45,-108,50,12" Grid.ColumnSpan="3" Grid.Column="1" Grid.RowSpan="2"/>
+                <Button Background="#F4A261" Grid.Row="2" Grid.Column="4">Fournisseurs</Button>
+                <Button Background="#F4A261" Grid.Row="0" Grid.Column="4">Employés</Button>
+            </Grid>
+
+
+
+
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

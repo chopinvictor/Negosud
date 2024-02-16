@@ -10,6 +10,8 @@ namespace NegosudAPI
         {
             using (var context = new NegosudContext())
             {
+
+
                 if (context.Domaines.Any()) return;
 
                 context.Domaines.Add(new Domaine() { Id = 1, NomDomaine = "Clos Lapeyre", AdresseDomaine = "10 rue des Caves", VilleDomaine = "Pau", CodePostalDomaine = "64110", PaysDomaine = "France" });
