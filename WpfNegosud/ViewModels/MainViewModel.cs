@@ -2,6 +2,7 @@
 using NegosudWpf.Views;
 using NegosudWpf.Views.Accueil;
 using NegosudWpf.Views.Clients;
+using NegosudWpf.Views.Domaines;
 using NegosudWpf.Views.Fournisseurs;
 using System.Windows.Controls;
 
@@ -107,5 +108,30 @@ namespace NegosudWpf.ViewModels
             uc.DataContext = new FournisseursViewModel();
             UserControl = uc;
         }
+
+        // Domaine
+        public void ChargerDomaine(int domaineId)
+        {
+            var uc = new ucDomaineControl();
+            uc.DataContext = new DomainesViewModel();
+            ((DomainesViewModel)uc.DataContext).GetDomaine(domaineId);
+            uc.DomaineId = domaineId;
+            UserControl = uc;
+        }
+
+        public void ChargerDomaineList()
+        {
+            var uc = new ucDomaineList();
+            uc.DataContext = new DomainesViewModel();
+            UserControl = uc;
+        }
+
+        public void CreateDomaine()
+        {
+            var uc = new ucCreateDomaine();
+            uc.DataContext = new DomainesViewModel();
+            UserControl = uc;
+        }
+
     }
 }

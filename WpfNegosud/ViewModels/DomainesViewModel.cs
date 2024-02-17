@@ -43,7 +43,7 @@ namespace NegosudWpf.ViewModels
             await HttpClientService.CreateDomaine(domaine);
         }
 
-        public async void UpdateDomaine(Domaine domaine) 
+        public async void UpdateDomaine(Domaine domaine)
         {
             await HttpClientService.UpdateDomaine(domaine);
         }

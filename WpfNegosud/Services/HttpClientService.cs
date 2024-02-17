@@ -345,5 +345,78 @@ namespace NegosudWpf.Services
                 throw new Exception(response.ReasonPhrase);
             }
         }
+
+        // Domaine
+        public static async Task<Domaine> GetDomaine(int domaineId)
+        {
+            string route = $"Domaines/{domaineId}";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string resultat = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Domaine>(resultat)
+                    ?? throw new FormatException($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task<ObservableCollection<Domaine>> GetAllDomaines()
+        {
+            string route = $"Domaines";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ObservableCollection<Domaine>>(result)
+                ?? throw new Exception($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task CreateDomaine(Domaine Domaine)
+        {
+            string route = $"Domaines";
+            string json = JsonConvert.SerializeObject(Domaine);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PostAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+        public static async Task UpdateDomaine(Domaine domaine)
+        {
+            string route = $"Domaines/{domaine.Id}";
+
+            string json = JsonConvert.SerializeObject(domaine);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PutAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"{response.ReasonPhrase}");
+            }
+        }
+
+        public static async Task DeleteDomaine(int id)
+        {
+            string route = $"Domaines/{id}";
+            var response = await Client.DeleteAsync(route);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
     }
 }

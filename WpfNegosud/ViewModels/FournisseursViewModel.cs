@@ -40,7 +40,6 @@ namespace NegosudWpf.ViewModels
             await HttpClientService.CreateFournisseur(fournisseur);
         }
 
-        // A faire marcher
         public async void UpdateFournisseur(Fournisseur fournisseur)
         {
             await HttpClientService.UpdateFournisseur(fournisseur);

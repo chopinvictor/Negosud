@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="NegosudWpf.Views.Domaines.ucDomaineControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NegosudWpf.Views.Domaines"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Border Background="Transparent">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="1"
+                           Text="Domaine"/>
+                <Border Grid.Row="2" Grid.Column="1"
+                        Background="#9C1814"
+                        Opacity="0.75">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="15"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="15"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="1" Grid.Column="1">
+                            <TextBlock Text="Nom domaine" Foreground="White"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Name="Nom" Text="{Binding Domaine.NomDomaine}"/>
+
+                            <TextBlock Text="Adresse" Foreground="White"/>
+                            <TextBox  Grid.Row="5" Grid.Column="1" Name="Adresse" Text="{Binding Domaine.AdresseDomaine}"/>
+
+                            <TextBlock Text="Code postal" Foreground="White"/>
+                            <TextBox  Grid.Row="7" Grid.Column="1" Name="CP" Text="{Binding Domaine.CodePostalDomaine}"/>
+
+                            <TextBlock Text="Ville" Foreground="White"/>
+                            <TextBox  Grid.Row="9" Grid.Column="1" Name="Ville" Text="{Binding Domaine.VilleDomaine}"/>
+
+                            <TextBlock Text="Pays" Foreground="White"/>
+                            <TextBox  Grid.Row="11" Grid.Column="1" Name="Pays" Text="{Binding Domaine.PaysDomaine}"/>
+
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="3" Grid.Column="1" Margin="0 10 0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Modifier" Click="UpdateDomaineValidation_Click"/>
+                    <Button Grid.Column="2" Content="Supprimer" Click="DeleteDomaine_Click"/>
+                    <Button Grid.Column="4" Content="Annuler"/>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
