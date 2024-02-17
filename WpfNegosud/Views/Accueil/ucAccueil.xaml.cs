@@ -30,6 +30,10 @@ namespace NegosudWpf.Views.Accueil
         private void MenuFournisseurs_Click(object sender, RoutedEventArgs e)
         {
             MainViewModel.Instance.ChargerFournisseurList();
+        }
+        private void MenuClients_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerClientList();
 
         }
     }

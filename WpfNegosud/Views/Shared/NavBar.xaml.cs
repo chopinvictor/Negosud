@@ -13,6 +13,10 @@ namespace NegosudWpf.Views.Shared
         {
             InitializeComponent();
         }
+        private void MenuAccueil_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerAccueil();
+        }
         private void MenuClients_Click(object sender, RoutedEventArgs e)
         {
             MainViewModel.Instance.ChargerClientList();

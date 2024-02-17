@@ -9,8 +9,9 @@
     <Menu>
         <StackPanel Orientation="Horizontal">
             <Image Source="/asset/LogoNegoSudRouge.png" Width="30" Height="30"/>
-            <TextBlock VerticalAlignment="Center" Text="Negosud"/>
+
         </StackPanel>
+        <MenuItem Header="Negosud" Click="MenuAccueil_Click"/>
         <MenuItem Header="Stock" Click="MenuProduits_Click" />
         <MenuItem Header="Clients" Click="MenuClients_Click" />
         <MenuItem Header="Fournisseurs" Click="MenuFournisseurs_Click" />
