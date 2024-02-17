@@ -8,8 +8,13 @@ namespace NegosudWpf.ViewModels
 {
     public class FournisseursViewModel : BaseViewModel
     {
+        
+        private static FournisseursViewModel instance = new FournisseursViewModel();
+
+        public static FournisseursViewModel Instance { get => instance; }
         public Fournisseur Fournisseur { get; set; }
 
+        
         public ObservableCollection<Fournisseur> ListeFournisseurs { get; set; }
 
         public FournisseursViewModel()
@@ -28,6 +33,21 @@ namespace NegosudWpf.ViewModels
         {
             ListeFournisseurs = await HttpClientService.GetAllFournisseurs();
             OnPropertyChanged(nameof(ListeFournisseurs));
+        }
+
+        public async void CreateFournisseur(Fournisseur fournisseur)
+        {
+            await HttpClientService.CreateFournisseur(fournisseur);
+        }
+
+        // A faire marcher
+        public async void UpdateFournisseur(Fournisseur fournisseur)
+        {
+            await HttpClientService.UpdateFournisseur(fournisseur);
+        }
+        public async void DeleteFournisseur(int id)
+        {
+            await HttpClientService.DeleteFournisseur(id);
         }
     }
 }

@@ -33,7 +33,7 @@
 
             <TextBlock Grid.Row="2" Grid.Column="1" Text="Fournisseurs" />
             <TextBox Grid.Row="2" Grid.Column="2" Text="Recherche" />
-            <Button Grid.Row="2" Grid.Column="6" Content="Créer" />
+            <Button Grid.Row="2" Grid.Column="6" Content="Créer" Click="FournisseurCreate_Click"/>
 
             <!--Carré Liste Fournisseur-->
             <ListBox ItemsSource="{Binding ListeFournisseurs}" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="6" Grid.IsSharedSizeScope="True">

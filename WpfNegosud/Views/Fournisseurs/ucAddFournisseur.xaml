@@ -22,7 +22,7 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="1" Grid.Column="1"
-                Text="Client"/>
+                Text="Modifier un Fournisseur"/>
             <Border Grid.Row="2" Grid.Column="1"
                 Background="#9C1814"
                 Opacity="0.75">
@@ -39,37 +39,40 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="1" Grid.Column="1">
                         <TextBlock Text="Fournisseur" Foreground="White"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Fournisseur.NomFournisseur}" />
+                            <TextBox Grid.Row="2" Grid.Column="1"  x:Name="Nom" Text="{Binding Fournisseur.NomFournisseur}" />
 
                         <TextBlock Text="Adresse" Foreground="White"/>
-                            <TextBox x:Name="adresse"  Text="{Binding Fournisseur.AdresseFournisseur}"/>
+                            <TextBox x:Name="Adresse"  Text="{Binding Fournisseur.AdresseFournisseur}"/>
 
                         <TextBlock Text="Code postal" Foreground="White"/>
-                            <TextBox x:Name="codepostal"  Text="{Binding Fournisseur.CodePostalFournisseur}"/>
+                            <TextBox x:Name="CP"  Text="{Binding Fournisseur.CodePostalFournisseur}"/>
 
                         <TextBlock Text="Ville" Foreground="White"/>
-                            <TextBox x:Name="ville"  Text="{Binding Fournisseur.VilleFournisseur}"/>
+                            <TextBox x:Name="Ville"  Text="{Binding Fournisseur.VilleFournisseur}"/>
 
                         <TextBlock Text="Pays" Foreground="White"/>
-                            <TextBox x:Name="pays"  Text="{Binding Fournisseur.PaysFournisseur}"/>
+                            <TextBox x:Name="Pays"  Text="{Binding Fournisseur.PaysFournisseur}"/>
 
                         <TextBlock Text="Téléphone" Foreground="White"/>
-                            <TextBox x:Name="telephone" Text="{Binding Fournisseur.TelephoneFournisseur}"/>
+                            <TextBox x:Name="Telephone" Text="{Binding Fournisseur.TelephoneFournisseur}"/>
 
                         <TextBlock Text="Adresse mail" Foreground="White"/>
-                            <TextBox x:Name="email"  Text="{Binding Fournisseur.EmailFournisseur}"/>
+                            <TextBox x:Name="Email"  Text="{Binding Fournisseur.EmailFournisseur}"/>
                     </StackPanel>
                 </Grid>
             </Border>
-            <Grid Grid.Row="3" Grid.Column="1" Margin="0 10 0 10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Content="Valider"/>
-                <Button Grid.Column="2" Content="Annuler"/>
-            </Grid>
+                <Grid Grid.Row="3" Grid.Column="1" Margin="0 10 0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Modifier" Click="UpdateFournisseurValidation_Click"/>
+                    <Button Grid.Column="2" Content="Supprimer" Click="DeleteFournisseur_Click"/>
+                    <Button Grid.Column="4" Content="Annuler"/>
+                </Grid>
         </Grid>
     </Border>
 </Grid>

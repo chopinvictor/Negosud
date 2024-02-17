@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Negosud.Class;
+using NegosudWpf.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,34 @@ namespace NegosudWpf.Views.Fournisseurs
     /// </summary>
     public partial class ucAddFournisseur : UserControl
     {
+
+        public Fournisseur Fournisseur = new Fournisseur();
+
+        public int FournisseurId { get; set; }
+
         public ucAddFournisseur()
         {
             InitializeComponent();
         }
+        private void UpdateFournisseurValidation_Click(object sender, RoutedEventArgs e)
+        {
+            var fournisseur = new Fournisseur()
+            {
+                Id = FournisseurId,
+                NomFournisseur = Nom.Text,
+                AdresseFournisseur = Adresse.Text,
+                CodePostalFournisseur = CP.Text,
+                VilleFournisseur = Ville.Text,
+                EmailFournisseur = Email.Text,
+                PaysFournisseur = Pays.Text,
+                TelephoneFournisseur = Telephone.Text
+            };
+            FournisseursViewModel.Instance.UpdateFournisseur(fournisseur);
+        }
+        private void DeleteFournisseur_Click(object sender, RoutedEventArgs e)
+        {
+            FournisseursViewModel.Instance.DeleteFournisseur(FournisseurId);
+        }
+
     }
 }

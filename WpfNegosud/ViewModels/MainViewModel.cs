@@ -97,6 +97,14 @@ namespace NegosudWpf.ViewModels
             var uc = new ucAddFournisseur();
             uc.DataContext = new FournisseursViewModel();
             ((FournisseursViewModel)uc.DataContext).GetFournisseur(fournisseurId);
+            uc.FournisseurId = fournisseurId;
+            UserControl = uc;
+        }
+
+        public void CreateFournisseur()
+        {
+            var uc = new ucCreateFournisseur();
+            uc.DataContext = new FournisseursViewModel();
             UserControl = uc;
         }
     }

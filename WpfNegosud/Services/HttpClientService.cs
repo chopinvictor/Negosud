@@ -48,7 +48,7 @@ namespace NegosudWpf.Services
         {
             string route = $"Clients";
             var response = await Client.GetAsync(route);
-            if ( response.IsSuccessStatusCode)
+            if (response.IsSuccessStatusCode)
             {
                 string result = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<ObservableCollection<Client>>(result)
@@ -79,7 +79,7 @@ namespace NegosudWpf.Services
             string route = $"Clients/{id}";
             var response = await Client.DeleteAsync(route);
 
-            if(!response.IsSuccessStatusCode) 
+            if (!response.IsSuccessStatusCode)
             {
                 throw new Exception(response.ReasonPhrase);
             }
@@ -178,7 +178,7 @@ namespace NegosudWpf.Services
             }
         }
 
-       // Fournisseur
+        // Fournisseur
         public static async Task<Fournisseur> GetFournisseur(int fournisseurId)
         {
             string route = $"Fournisseurs/{fournisseurId}";
@@ -299,5 +299,51 @@ namespace NegosudWpf.Services
         }
         #endregion
 
+
+        public static async Task CreateFournisseur(Fournisseur fournisseur)
+        {
+            string route = $"Fournisseurs";
+            string json = JsonConvert.SerializeObject(fournisseur);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PostAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+        public static async Task UpdateFournisseur(Fournisseur fournisseur)
+        {
+            string route = $"Fournisseurs/{fournisseur.Id}";
+
+            string json = JsonConvert.SerializeObject(fournisseur);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PutAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"{response.ReasonPhrase}");
+            }
+        }
+
+        public static async Task DeleteFournisseur(int id)
+        {
+            string route = $"Fournisseurs/{id}";
+            var response = await Client.DeleteAsync(route);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
     }
 }

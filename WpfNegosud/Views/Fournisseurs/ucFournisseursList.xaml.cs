@@ -15,6 +15,11 @@ namespace NegosudWpf.Views.Fournisseurs
             InitializeComponent();
         }
 
+        private void FournisseurCreate_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.CreateFournisseur();
+        }
+
         private void FournisseurDetails_click(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;
