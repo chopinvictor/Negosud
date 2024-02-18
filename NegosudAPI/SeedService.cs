@@ -12,24 +12,24 @@ namespace NegosudAPI
             {
                 if (context.Domaines.Any()) return;
 
-                context.Domaines.Add(new Domaine() { Id = 1, NomDomaine = "Clos Lapeyre", AdresseDomaine = "10 rue des Caves, Pau", CodePostalDomaine = "64110", PaysDomaine = "France" });
-                context.Domaines.Add(new Domaine() { Id = 2, NomDomaine = "Saint-Émilion", AdresseDomaine = "12 rue des Vignes, Saint-Émilion", CodePostalDomaine = "33330", PaysDomaine = "France" });
-                context.Domaines.Add(new Domaine() { Id = 3, NomDomaine = "Gewurtztraminer", AdresseDomaine = "10 avenue de la Libération, Strasbourg", CodePostalDomaine = "67200", PaysDomaine = "France" });
-                context.Domaines.Add(new Domaine() { Id = 4, NomDomaine = "Camyn Larreyda", AdresseDomaine = "26 Chemin du plateau, Jurançon", CodePostalDomaine = "64110", PaysDomaine = "France" });
-                context.Domaines.Add(new Domaine() { Id = 5, NomDomaine = "Burgué Seré", AdresseDomaine = "4 Chemin Casadebeig, Jurançon", CodePostalDomaine = "64110", PaysDomaine = "France" });
-                context.Domaines.Add(new Domaine() { Id = 6, NomDomaine = "Malarrode", AdresseDomaine = "8 Chemin du bois, Jurançon", CodePostalDomaine = "64110", PaysDomaine = "France" });
-                context.Domaines.Add(new Domaine() { Id = 7, NomDomaine = "Beauregard", AdresseDomaine = "50 chemin de la Vigne, Saint-Émilion", CodePostalDomaine = "33330", PaysDomaine = "France" });
-                context.Domaines.Add(new Domaine() { Id = 8, NomDomaine = "Bernateau", AdresseDomaine = "12 chemin de la Traversée, Saint-Émilion", CodePostalDomaine = "33330", PaysDomaine = "France" });
-                context.Domaines.Add(new Domaine() { Id = 9, NomDomaine = "Bernon Bécot", AdresseDomaine = "6 chemin de l'orée du bois, Saint-Émilion", CodePostalDomaine = "33330", PaysDomaine = "France" });
-                context.Domaines.Add(new Domaine() { Id = 10, NomDomaine = "Rioja Haro", AdresseDomaine = "Calle de la Vigna, La Rioja", CodePostalDomaine = "26200", PaysDomaine = "Espagne" });
-                context.Domaines.Add(new Domaine() { Id = 11, NomDomaine = "Semblante Carmenere", AdresseDomaine = "12 Camino del roja, Haro", CodePostalDomaine = "15220", PaysDomaine = "Chili" });
-                context.Domaines.Add(new Domaine() { Id = 12, NomDomaine = "Cantoalba", AdresseDomaine = "3 Camino de la Camisetta, Burgos", CodePostalDomaine = "14317", PaysDomaine = "Chili" });
-                context.Domaines.Add(new Domaine() { Id = 13, NomDomaine = "Romanée-Conti", AdresseDomaine = "12 rue des viticulteurs, Vosne-Romanée", CodePostalDomaine = "21700", PaysDomaine = "France" });
-                context.Domaines.Add(new Domaine() { Id = 14, NomDomaine = "Château Margaux", AdresseDomaine = "1 rue du château, Margaux", CodePostalDomaine = "33460", PaysDomaine = "France" });
-                context.Domaines.Add(new Domaine() { Id = 15, NomDomaine = "Château de Meursault", AdresseDomaine = "81 rue du château, Mersault", CodePostalDomaine = "33460", PaysDomaine = "France" });
-                context.Domaines.Add(new Domaine() { Id = 16, NomDomaine = "Francis Ford Coppola", AdresseDomaine = "6 Old River Ld, Santa Rosa", CodePostalDomaine = "98045", PaysDomaine = "Etats -Unis" });
-                context.Domaines.Add(new Domaine() { Id = 17, NomDomaine = "Kendall-JAckson", AdresseDomaine = "5007 Fulton Rd Sierra Roja", CodePostalDomaine = "95403", PaysDomaine = "Etats -Unis" });
-                context.Domaines.Add(new Domaine() { Id = 18, NomDomaine = "Zinfendel", AdresseDomaine = "4012 Creek Ld, Santa Rosa", CodePostalDomaine = "98045", PaysDomaine = "Etats -Unis" });
+                context.Domaines.Add(new Domaine() { Id = 1, NomDomaine = "Clos Lapeyre", AdresseDomaine = "10 rue des Caves", VilleDomaine = "Pau", CodePostalDomaine = "64110", PaysDomaine = "France" });
+                context.Domaines.Add(new Domaine() { Id = 2, NomDomaine = "Saint-Émilion", AdresseDomaine = "12 rue des Vignes", VilleDomaine = "Saint-Émilion", CodePostalDomaine = "33330", PaysDomaine = "France" });
+                context.Domaines.Add(new Domaine() { Id = 3, NomDomaine = "Gewurtztraminer", AdresseDomaine = "10 avenue de la Libération", VilleDomaine = "Strasbourg", CodePostalDomaine = "67200", PaysDomaine = "France" });
+                context.Domaines.Add(new Domaine() { Id = 4, NomDomaine = "Camyn Larreyda", AdresseDomaine = "26 Chemin du plateau", VilleDomaine = "Jurançon", CodePostalDomaine = "64110", PaysDomaine = "France" });
+                context.Domaines.Add(new Domaine() { Id = 5, NomDomaine = "Burgué Seré", AdresseDomaine = "4 Chemin Casadebeig", VilleDomaine = "Jurançon", CodePostalDomaine = "64110", PaysDomaine = "France" });
+                context.Domaines.Add(new Domaine() { Id = 6, NomDomaine = "Malarrode", AdresseDomaine = "8 Chemin du bois", VilleDomaine = "Jurançon", CodePostalDomaine = "64110", PaysDomaine = "France" });
+                context.Domaines.Add(new Domaine() { Id = 7, NomDomaine = "Beauregard", AdresseDomaine = "50 chemin de la Vigne", VilleDomaine = "Saint-Émilion", CodePostalDomaine = "33330", PaysDomaine = "France" });
+                context.Domaines.Add(new Domaine() { Id = 8, NomDomaine = "Bernateau", AdresseDomaine = "12 chemin de la Traversée", VilleDomaine = "Saint-Émilion", CodePostalDomaine = "33330", PaysDomaine = "France" });
+                context.Domaines.Add(new Domaine() { Id = 9, NomDomaine = "Bernon Bécot", AdresseDomaine = "6 chemin de l'orée du bois", VilleDomaine = "Saint-Émilion", CodePostalDomaine = "33330", PaysDomaine = "France" });
+                context.Domaines.Add(new Domaine() { Id = 10, NomDomaine = "Rioja Haro", AdresseDomaine = "Calle de la Vigna", VilleDomaine = "La Rioja", CodePostalDomaine = "26200", PaysDomaine = "Espagne" });
+                context.Domaines.Add(new Domaine() { Id = 11, NomDomaine = "Semblante Carmenere", AdresseDomaine = "12 Camino del roja", VilleDomaine = "Haro", CodePostalDomaine = "15220", PaysDomaine = "Chili" });
+                context.Domaines.Add(new Domaine() { Id = 12, NomDomaine = "Cantoalba", AdresseDomaine = "3 Camino de la Camisetta", VilleDomaine = "Burgos", CodePostalDomaine = "14317", PaysDomaine = "Chili" });
+                context.Domaines.Add(new Domaine() { Id = 13, NomDomaine = "Romanée-Conti", AdresseDomaine = "12 rue des viticulteurs", VilleDomaine = "Vosne-Romanée", CodePostalDomaine = "21700", PaysDomaine = "France" });
+                context.Domaines.Add(new Domaine() { Id = 14, NomDomaine = "Château Margaux", AdresseDomaine = "1 rue du château", VilleDomaine = "Margaux", CodePostalDomaine = "33460", PaysDomaine = "France" });
+                context.Domaines.Add(new Domaine() { Id = 15, NomDomaine = "Château de Meursault", AdresseDomaine = "81 rue du château", VilleDomaine = "Mersault", CodePostalDomaine = "33460", PaysDomaine = "France" });
+                context.Domaines.Add(new Domaine() { Id = 16, NomDomaine = "Francis Ford Coppola", AdresseDomaine = "6 Old River Ld ", VilleDomaine = "Santa Rosa", CodePostalDomaine = "98045", PaysDomaine = "Etats -Unis" });
+                context.Domaines.Add(new Domaine() { Id = 17, NomDomaine = "Kendall-JAckson", AdresseDomaine = "5007 Fulton Rd Sierra ", VilleDomaine = "Roja", CodePostalDomaine = "95403", PaysDomaine = "Etats -Unis" });
+                context.Domaines.Add(new Domaine() { Id = 18, NomDomaine = "Zinfendel", AdresseDomaine = "4012 Creek Ld", VilleDomaine = "Santa Rosa", CodePostalDomaine = "98045", PaysDomaine = "Etats -Unis" });
 
                 context.Types.Add(new Type() { Id = 1, NomType = "Blanc" });
                 context.Types.Add(new Type() { Id = 2, NomType = "Rouge" });
@@ -48,27 +48,32 @@ namespace NegosudAPI
                 context.Clients.Add(new Client() { Id = 9, NomClient = "Rodrigues", PrenomClient = "Alejandro", AdresseClient = "10 rue de Porto", VilleClient = "Lisbonne", CodePostalClient = "1100", PaysClient = "Portugal", EmailClient = "rodriguez@gmail.com", TelephoneClient = "0030330548" });
                 context.Clients.Add(new Client() { Id = 10, NomClient = "Zhang", PrenomClient = "Wei", AdresseClient = "Zhonghuang Building #1007", VilleClient = "Shanghai", CodePostalClient = "200030", PaysClient = "Chine", EmailClient = "zhangwei@gmail.com", TelephoneClient = "860623034" });
 
-                context.Fournisseurs.Add(new Fournisseur() { Id = 1, NomFournisseur = "Les Grappes", AdresseFournisseur = "ZI Mirador, Bordeaux", CodePostalFournisseur = "33000", PaysFournisseur = "France", TelephoneFournisseur = "0559335741", EmailFournisseur = "lagrappe@commerial-contact.fr" });
-                context.Fournisseurs.Add(new Fournisseur() { Id = 2, NomFournisseur = "Agidra", AdresseFournisseur = "12 chemin de la cale, Bordeaux", CodePostalFournisseur = "33000", PaysFournisseur = "France", TelephoneFournisseur = "0559262181", EmailFournisseur = "agidra@contact.fr" });
-                context.Fournisseurs.Add(new Fournisseur() { Id = 3, NomFournisseur = "Le Bon Vin", AdresseFournisseur = "32 rue du Bourg, Bordeaux", CodePostalFournisseur = "33000", PaysFournisseur = "France", TelephoneFournisseur = "0559124087", EmailFournisseur = "lebonvin@contact.fr" });
+                context.Fournisseurs.Add(new Fournisseur() { Id = 1, NomFournisseur = "Les Grappes", AdresseFournisseur = "ZI Mirador ", VilleFournisseur = "Bordeaux", CodePostalFournisseur = "33000", PaysFournisseur = "France", TelephoneFournisseur = "0559335741", EmailFournisseur = "lagrappe@commerial-contact.fr" });
+                context.Fournisseurs.Add(new Fournisseur() { Id = 2, NomFournisseur = "Agidra", AdresseFournisseur = "12 chemin de la cale", VilleFournisseur = "Bordeaux", CodePostalFournisseur = "33000", PaysFournisseur = "France", TelephoneFournisseur = "0559262181", EmailFournisseur = "agidra@contact.fr" });
+                context.Fournisseurs.Add(new Fournisseur() { Id = 3, NomFournisseur = "Le Bon Vin", AdresseFournisseur = "32 rue du Bourg", VilleFournisseur = "Bordeaux", CodePostalFournisseur = "33000", PaysFournisseur = "France", TelephoneFournisseur = "0559124087", EmailFournisseur = "lebonvin@contact.fr" });
 
-                var produit1 = new Produit() { Id = 1, NomProduit = "Les Grappes", NbProduit = 10, PrixProduit = 10.5f, TypeID = 1, DomaineID = 1 };
-                var produit2 = new Produit() { Id = 2, NomProduit = "L'Uby", NbProduit = 15, PrixProduit = 12.3f, TypeID = 2, DomaineID = 8 };
+                var produit1 = new Produit() { Id = 1, NomProduit = "Les Grappes", NbProduit = 10, PrixProduit = 10.5f, TypeID = 1, DomaineID = 1, Quantite = 50 };
+                var produit2 = new Produit() { Id = 2, NomProduit = "L'Uby", NbProduit = 15, PrixProduit = 12.3f, TypeID = 2, DomaineID = 8, Quantite = 50 };
                 context.Produits.Add(produit1);
                 context.Produits.Add(produit2);
-                context.Produits.Add(new Produit() { Id = 3, NomProduit = "Bernadets", NbProduit = 13, PrixProduit = 9.3f, TypeID = 3, DomaineID = 4 });
-                context.Produits.Add(new Produit() { Id = 4, NomProduit = "Gev Vendandes tardives", NbProduit = 31, PrixProduit = 15.7f, TypeID = 4, DomaineID = 3 });
-                context.Produits.Add(new Produit() { Id = 5, NomProduit = "Old Wine", NbProduit = 30, PrixProduit = 10.9f, TypeID = 3, DomaineID = 1 });
-                context.Produits.Add(new Produit() { Id = 6, NomProduit = "Caberney", NbProduit = 15, PrixProduit = 12.1f, TypeID = 4, DomaineID = 2 });
-                context.Produits.Add(new Produit() { Id = 7, NomProduit = "Valto", NbProduit = 13, PrixProduit = 9.3f, TypeID = 2, DomaineID = 7 });
-                context.Produits.Add(new Produit() { Id = 8, NomProduit = "Werner", NbProduit = 31, PrixProduit = 15.7f, TypeID = 1, DomaineID = 11 });
+                context.Produits.Add(new Produit() { Id = 3, NomProduit = "Bernadets", NbProduit = 13, PrixProduit = 9.3f, TypeID = 3, DomaineID = 4, Quantite = 50 });
+                context.Produits.Add(new Produit() { Id = 4, NomProduit = "Gev Vendandes tardives", NbProduit = 31, PrixProduit = 15.7f, TypeID = 4, DomaineID = 3, Quantite = 50 });
+                context.Produits.Add(new Produit() { Id = 5, NomProduit = "Old Wine", NbProduit = 30, PrixProduit = 10.9f, TypeID = 3, DomaineID = 1, Quantite = 50 });
+                context.Produits.Add(new Produit() { Id = 6, NomProduit = "Caberney", NbProduit = 15, PrixProduit = 12.1f, TypeID = 4, DomaineID = 2, Quantite = 50 });
+                context.Produits.Add(new Produit() { Id = 7, NomProduit = "Valto", NbProduit = 13, PrixProduit = 9.3f, TypeID = 2, DomaineID = 7, Quantite = 50 });
+                context.Produits.Add(new Produit() { Id = 8, NomProduit = "Werner", NbProduit = 31, PrixProduit = 15.7f, TypeID = 1, DomaineID = 11, Quantite = 50 });
 
-                context.Commandes.Add(new Commande() { Id = 1, DateCommande = DateTime.Now, FournisseurId = 1, EstEntreeSortie = true,
+                context.Commandes.Add(new Commande()
+                {
+                    Id = 1,
+                    DateCommande = DateTime.Now,
+                    FournisseurId = 1,
+                    EstEntreeSortie = true,
                     ListProduits = new List<Produit> { produit1, produit2 },
                     PrixTotal = (produit1.PrixProduit * 6) + (produit2.PrixProduit * 12),
                 });
 
-                context.Transactions.Add(new Transaction() { Id = 1, ProduitId = produit1.Id, NbProduit = 6, Description = "Achat", CommandeId = 1});
+                context.Transactions.Add(new Transaction() { Id = 1, ProduitId = produit1.Id, NbProduit = 6, Description = "Achat", CommandeId = 1 });
                 context.Transactions.Add(new Transaction() { Id = 2, ProduitId = produit2.Id, NbProduit = 12, Description = "Achat", CommandeId = 1 });
 
                 context.SaveChanges();

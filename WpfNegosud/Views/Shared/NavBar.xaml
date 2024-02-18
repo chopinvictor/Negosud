@@ -11,7 +11,7 @@
             <Image Source="/asset/LogoNegoSudRouge.png" Width="30" Height="30"/>
             <TextBlock VerticalAlignment="Center" Text="Negosud"/>
         </StackPanel>
-        <MenuItem Header="Stock" />
+        <MenuItem Header="Stock" Click="MenuProduits_Click" />
         <MenuItem Header="Clients" Click="MenuClients_Click" />
         <MenuItem Header="Fournisseurs" />
         <MenuItem Header="Vente" />

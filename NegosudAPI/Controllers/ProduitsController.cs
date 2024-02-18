@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Negosud.Class;
 using Negosud.Context;
+using Negosud.Dto;
+using Negosud.Extensions;
 
 namespace NegosudAPI.Controllers
 {
@@ -23,16 +20,23 @@ namespace NegosudAPI.Controllers
 
         // GET: api/Produits
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Produit>>> GetProduits()
+        public async Task<ActionResult<IEnumerable<ProduitDto>>> GetProduits()
         {
-            return await _context.Produits.ToListAsync();
+            return await _context.Produits.Include(p => p.Domaine)
+                                          .Include(p => p.Type)
+                                          .Select(p => p.ToDto())
+                                          .ToListAsync();
         }
 
         // GET: api/Produits/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Produit>> GetProduit(int id)
+        public async Task<ActionResult<ProduitDto>> GetProduit(int id)
         {
-            var produit = await _context.Produits.FindAsync(id);
+            var produit = await _context.Produits.Include(p => p.Domaine)
+                                                 .Include(p => p.Type)
+                                                 .Where(p => p.Id == id)
+                                                 .Select(p => p.ToDto())
+                                                 .FirstOrDefaultAsync();
 
             if (produit == null)
             {

@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+	<PublishSingleFile>true</PublishSingleFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +15,18 @@
 
   <ItemGroup>
     <ProjectReference Include="..\negosud\Negosud.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Produits\ucProduitControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Produits\ucProduitsList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Produits\ucCreateProduit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>

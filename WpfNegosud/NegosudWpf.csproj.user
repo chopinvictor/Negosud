@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup />
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\Users\vicch\Desktop\VRAI DOSSIER SES MORST\WpfNegosud\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
   <ItemGroup>
     <ApplicationDefinition Update="App.xaml">
       <SubType>Designer</SubType>
@@ -25,6 +27,15 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Produits\ucProduitControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Produits\ucProduitsList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Produits\ucCreateProduit.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Clients\ucClientControl.xaml">

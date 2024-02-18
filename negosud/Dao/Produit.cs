@@ -18,18 +18,20 @@ namespace Negosud.Class
         [ForeignKey(nameof(Type))]
         public int TypeID { get; set; }
 
-        public virtual Type Type { get; set; } = null!;
+        public virtual Type? Type { get; set; } = null!;
 
         // Domaine
         [ForeignKey(nameof(Domaine))]
         public int DomaineID { get; set; }
 
-        public virtual Domaine Domaine { get; set; } = null!;
+        public virtual Domaine? Domaine { get; set; } = null!;
 
         // Commandes
         public virtual List<Commande>? ListCommandes { get; set; } = null!;
 
         // Fournisseurs
         public virtual List<Historique>? ListHistorique { get; set; } = null!;
+
+        public int Quantite {  get; set; }
     }
 }

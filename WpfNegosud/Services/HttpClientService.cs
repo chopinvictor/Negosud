@@ -11,6 +11,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using Type = Negosud.Class.Type;
 
 namespace NegosudWpf.Services
 {
@@ -100,5 +101,175 @@ namespace NegosudWpf.Services
                 throw new Exception($"{response.ReasonPhrase}");
             }
         }
+
+
+        #region Produits
+
+        public static async Task<ProduitDto> GetProduit(int produitId)
+        {
+            string route = $"Produits/{produitId}";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string resultat = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ProduitDto>(resultat)
+                    ?? throw new FormatException($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task<ObservableCollection<ProduitDto>> GetAllProduits()
+        {
+            string route = $"Produits";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ObservableCollection<ProduitDto>>(result)
+                ?? throw new Exception($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task CreateProduit(Produit produit)
+        {
+            string route = $"Produits";
+            string json = JsonConvert.SerializeObject(produit);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PostAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+        public static async Task DeleteProduit(int id)
+        {
+            string route = $"Produits/{id}";
+            var response = await Client.DeleteAsync(route);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+        public static async Task UpdateProduit(Produit produit)
+        {
+            string route = $"Produits/{produit.Id}";
+
+            string json = JsonConvert.SerializeObject(produit);
+            var buffer = Encoding.UTF8.GetBytes(json);
+            var byteContent = new ByteArrayContent(buffer);
+
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PutAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"{response.ReasonPhrase}");
+            }
+        }
+
+        #endregion
+
+
+        #region Domaines
+
+        public static async Task<Domaine> GetDomaine(int domaineId)
+        {
+            string route = $"Domaines/{domaineId}";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string resultat = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Domaine>(resultat)
+                    ?? throw new FormatException($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task<ObservableCollection<Domaine>> GetAllDomaines()
+        {
+            string route = $"Domaines";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ObservableCollection<Domaine>>(result)
+                ?? throw new Exception($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task CreateDomaine(Domaine domaine)
+        {
+            string route = $"Domaines";
+            string json = JsonConvert.SerializeObject(domaine);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PostAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+        public static async Task DeleteDomaine(int id)
+        {
+            string route = $"Domaines/{id}";
+            var response = await Client.DeleteAsync(route);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+        public static async Task UpdateDomaine(Domaine domaine)
+        {
+            string route = $"Domaines/{domaine.Id}";
+
+            string json = JsonConvert.SerializeObject(domaine);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PutAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"{response.ReasonPhrase}");
+            }
+        }
+
+        #endregion
+
+        #region Types
+        public static async Task<ObservableCollection<Type>> GetAllTypes()
+        {
+            string route = $"Types";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ObservableCollection<Type>>(result)
+                ?? throw new Exception($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+        #endregion
+
     }
 }

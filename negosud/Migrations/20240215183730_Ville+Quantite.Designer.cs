@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Negosud.Context;
 
@@ -10,9 +11,11 @@ using Negosud.Context;
 namespace Negosud.Migrations
 {
     [DbContext(typeof(NegosudContext))]
-    partial class NegosudContextModelSnapshot : ModelSnapshot
+    [Migration("20240215183730_Ville+Quantite")]
+    partial class VilleQuantite
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,7 +34,7 @@ namespace Negosud.Migrations
 
                     b.HasIndex("ListProduitsId");
 
-                    b.ToTable("CommandeProduit", (string)null);
+                    b.ToTable("CommandeProduit");
                 });
 
             modelBuilder.Entity("Negosud.Class.Client", b =>
@@ -79,7 +82,7 @@ namespace Negosud.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clients", (string)null);
+                    b.ToTable("Clients");
                 });
 
             modelBuilder.Entity("Negosud.Class.Commande", b =>
@@ -108,7 +111,7 @@ namespace Negosud.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Commandes", (string)null);
+                    b.ToTable("Commandes");
                 });
 
             modelBuilder.Entity("Negosud.Class.Domaine", b =>
@@ -141,7 +144,7 @@ namespace Negosud.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Domaines", (string)null);
+                    b.ToTable("Domaines");
                 });
 
             modelBuilder.Entity("Negosud.Class.Fournisseur", b =>
@@ -183,7 +186,7 @@ namespace Negosud.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Fournisseurs", (string)null);
+                    b.ToTable("Fournisseurs");
                 });
 
             modelBuilder.Entity("Negosud.Class.Historique", b =>
@@ -213,7 +216,7 @@ namespace Negosud.Migrations
 
                     b.HasIndex("ProduitId");
 
-                    b.ToTable("Historiques", (string)null);
+                    b.ToTable("Historiques");
                 });
 
             modelBuilder.Entity("Negosud.Class.Produit", b =>
@@ -248,7 +251,7 @@ namespace Negosud.Migrations
 
                     b.HasIndex("TypeID");
 
-                    b.ToTable("Produits", (string)null);
+                    b.ToTable("Produits");
                 });
 
             modelBuilder.Entity("Negosud.Class.Transaction", b =>
@@ -281,7 +284,7 @@ namespace Negosud.Migrations
 
                     b.HasIndex("ProduitId");
 
-                    b.ToTable("Transactions", (string)null);
+                    b.ToTable("Transactions");
                 });
 
             modelBuilder.Entity("Negosud.Class.Type", b =>
@@ -297,7 +300,7 @@ namespace Negosud.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Types", (string)null);
+                    b.ToTable("Types");
                 });
 
             modelBuilder.Entity("Negosud.Class.Utilisateur", b =>
@@ -306,7 +309,7 @@ namespace Negosud.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<sbyte>("Admin")
+                    b.Property<bool>("Admin")
                         .HasMaxLength(80)
                         .HasColumnType("tinyint(80)");
 
@@ -322,7 +325,7 @@ namespace Negosud.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CommandeProduit", b =>

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NegosudConsole", "..\Negosu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NegosudWpf", "..\WpfNegosud\NegosudWpf.csproj", "{861E44FA-4CBC-4F6E-8F42-3E3CA5F7034D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NegosudAPI", "..\NegosudAPI\NegosudAPI.csproj", "{0D627ED8-1630-4863-9CF0-F0F13ABAF5D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NegosudAPI", "..\NegosudAPI\NegosudAPI.csproj", "{0D627ED8-1630-4863-9CF0-F0F13ABAF5D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

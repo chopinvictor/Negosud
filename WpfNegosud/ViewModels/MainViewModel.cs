@@ -43,5 +43,30 @@ namespace NegosudWpf.ViewModels
             uc.DataContext = new ClientsViewModel();
             UserControl = uc;
         }
+
+        public async void ChargerProduit(int produitId, int domaineId, int typeId)
+        {
+            var uc = new ucProduitControl();
+            uc.DataContext = new ProduitsViewModel();
+            ((ProduitsViewModel)uc.DataContext).GetProduit(produitId);
+            uc.ProduitId = produitId;
+            uc.TypeId = typeId;
+            uc.DomaineId = domaineId;
+            UserControl = uc;
+        }
+
+        public void ChargerProduitList()
+        {
+            var uc = new ucProduitsList();
+            uc.DataContext = new ProduitsViewModel();
+            UserControl = uc;
+        }
+
+        public void CreateProduit()
+        {
+            var uc = new ucProduitControl();
+            uc.DataContext = new ProduitsViewModel();
+            UserControl = uc;
+        }
     }
 }
