@@ -1,5 +1,7 @@
-﻿using Negosud.Class;
+﻿using Microsoft.EntityFrameworkCore;
+using Negosud.Class;
 using Negosud.Context;
+using static Negosud.Context.NegosudContext;
 using Type = Negosud.Class.Type;
 
 namespace NegosudAPI
@@ -8,7 +10,8 @@ namespace NegosudAPI
     {
         public static void SeedDatabase()
         {
-            using (var context = new NegosudContext())
+            var factoryContext = new NegosudContextFactory();
+            using (var context = factoryContext.CreateDbContext([]))
             {
 
 

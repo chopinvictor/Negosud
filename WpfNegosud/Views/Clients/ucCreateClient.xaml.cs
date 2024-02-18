@@ -43,5 +43,15 @@ namespace NegosudWpf.Views.Clients
 
             ClientsViewModel.Instance.CreateClient(client);
         }
+
+        private void ClientCreate_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.CreateClient();
+        }
+
+        private void ReturnClientList_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerClientList();
+        }
     }
 }

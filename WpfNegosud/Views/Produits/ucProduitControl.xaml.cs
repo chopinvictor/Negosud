@@ -27,7 +27,7 @@ namespace NegosudWpf.Views
 
         public int ProduitId { get; set; }
 
-        public int DomaineId{ get; set; }
+        public int DomaineId { get; set; }
 
         public int TypeId { get; set; }
 
@@ -86,6 +86,11 @@ namespace NegosudWpf.Views
         {
             Type type = (Type)((ComboBox)sender).SelectedItem;
             TypeId = type.Id;
+        }
+
+        private void ReturnProduitList_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerProduitList();
         }
     }
 }

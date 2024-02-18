@@ -75,7 +75,7 @@
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Content="Modifier" Click="UpdateClientValidation_Click"/>
                     <Button Grid.Column="2" Content="Supprimer" Click="DeleteClient_Click"/>
-                    <Button Grid.Column="4" Content="Annuler"/>
+                    <Button Grid.Column="4" Content="Annuler" Click="ReturnClientList_Click"/>
                 </Grid>
             </Grid>
         </Border>

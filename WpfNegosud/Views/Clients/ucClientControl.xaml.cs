@@ -40,5 +40,10 @@ namespace NegosudWpf.Views
         {
             ClientsViewModel.Instance.DeleteClient(ClientId);
         }
+
+        private void ReturnClientList_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerClientList();
+        }
     }
 }

@@ -1,8 +1,18 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Negosud.Context;
+using Negosud.Dao;
 using NegosudAPI;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme)
+    .AddIdentityCookies();
+builder.Services.AddAuthorizationBuilder();
+
+builder.Services.AddIdentityCore<User>()
+    .AddEntityFrameworkStores<NegosudContext>()
+    .AddApiEndpoints();
 
 SeedService.SeedDatabase();
 
@@ -24,6 +34,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+app.MapIdentityApi<User>();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

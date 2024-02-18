@@ -49,5 +49,10 @@ namespace NegosudWpf.Views.Domaines
         {
             DomainesViewModel.Instance.DeleteDomaine(DomaineId);
         }
+
+        private void ReturnDomaineList_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerDomaineList();
+        }
     }
 }

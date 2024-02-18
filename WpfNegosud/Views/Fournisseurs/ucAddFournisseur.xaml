@@ -71,7 +71,7 @@
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Content="Modifier" Click="UpdateFournisseurValidation_Click"/>
                     <Button Grid.Column="2" Content="Supprimer" Click="DeleteFournisseur_Click"/>
-                    <Button Grid.Column="4" Content="Annuler"/>
+                    <Button Grid.Column="4" Content="Annuler" Click="ReturnFournisseurList_Click"/>
                 </Grid>
         </Grid>
     </Border>

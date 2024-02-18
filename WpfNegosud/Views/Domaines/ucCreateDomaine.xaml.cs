@@ -42,6 +42,10 @@ namespace NegosudWpf.Views.Domaines
 
             DomainesViewModel.Instance.CreateDomaine(Domaine);
         }
-        
+
+        private void ReturnDomaineList_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerDomaineList();
+        }
     }
 }

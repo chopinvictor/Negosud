@@ -26,7 +26,10 @@ namespace NegosudWpf.Views.Fournisseurs
             MainViewModel.Instance.ChargerFournisseur(((Fournisseur)btn.DataContext).Id);
         }
 
-
+        private void ReturnFournisseurList_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerFournisseurList();
+        }
 
     }
 }

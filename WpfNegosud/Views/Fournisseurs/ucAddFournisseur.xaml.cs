@@ -51,5 +51,9 @@ namespace NegosudWpf.Views.Fournisseurs
             FournisseursViewModel.Instance.DeleteFournisseur(FournisseurId);
         }
 
+        private void ReturnFournisseurList_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerFournisseurList();
+        }
     }
 }

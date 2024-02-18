@@ -6,7 +6,7 @@ using System.Windows.Controls;
 namespace NegosudWpf.Views.Clients
 {
     /// <summary>
-    /// Logique d'interaction pour ucCreateClient.xaml
+    /// Logique d'interaction pour ucCreateProduit.xaml
     /// </summary>
     public partial class ucCreateProduit : UserControl
     {
@@ -15,7 +15,7 @@ namespace NegosudWpf.Views.Clients
             InitializeComponent();
         }
 
-        private void CreateClientValidation_Click(object sender, RoutedEventArgs e)
+        private void CreateProduitValidation_Click(object sender, RoutedEventArgs e)
         {
             var temp = Prix.Text.Replace(".", ",");
 
@@ -32,6 +32,11 @@ namespace NegosudWpf.Views.Clients
                 NbProduit = nombre
             };
             ProduitsViewModel.Instance.CreateProduit(produit);
+        }
+
+        private void ReturnProduitList_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerProduitList();
         }
     }
 }

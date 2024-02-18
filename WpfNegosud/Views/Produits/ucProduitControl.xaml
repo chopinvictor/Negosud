@@ -82,13 +82,13 @@
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button Content="Modifier" Width="100" Margin="5" Click="UpdateProduitValidation_Click"/>
                 <Button Content="Supprimer" Width="100" Margin="5"/>
-                <Button Content="Retour" Width="100" Margin="5"/>
+                <Button Content="Retour" Width="100" Margin="5" Click="ReturnProduitList_Click"/>
                 <Button Content="Commander" Width="100" Margin="50 5 5 5"/>
             </StackPanel>
         </StackPanel>
 
 
-
+        
 
         <StackPanel Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Margin="0,0,52,161">
 

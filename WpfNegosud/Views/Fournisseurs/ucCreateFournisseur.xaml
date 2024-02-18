@@ -22,7 +22,7 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="1" Grid.Column="1"
-                       Text="Créer un client"/>
+                       Text="Créer un fournisseur"/>
                 <Border Grid.Row="2" Grid.Column="1"
                     Background="#9C1814"
                     Opacity="0.75">
@@ -68,7 +68,7 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Content="Créer" Click="CreateFournisseurValidation_Click"/>
-                    <Button Grid.Column="2" Content="Annuler" />
+                    <Button Grid.Column="4" Content="Annuler" Click="ReturnFournisseurList_Click"/>
                 </Grid>
             </Grid>
         </Border>

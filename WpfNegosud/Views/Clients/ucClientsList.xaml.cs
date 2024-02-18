@@ -29,5 +29,10 @@ namespace NegosudWpf.Views
         {
             MainViewModel.Instance.CreateClient();
         }
+
+        private void ReturnClientList_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerClientList();
+        }
     }
 }

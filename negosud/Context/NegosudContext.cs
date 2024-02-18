@@ -1,10 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Negosud.Class;
+using Negosud.Dao;
 using Type = Negosud.Class.Type;
 
 namespace Negosud.Context
 {
-    public class NegosudContext : DbContext
+        public class NegosudContext(DbContextOptions<NegosudContext> options) : IdentityDbContext<User>(options)
     {
         public DbSet<Produit> Produits { get; set; }
 
@@ -18,20 +21,21 @@ namespace Negosud.Context
 
         public DbSet<Fournisseur> Fournisseurs { get; set; }
 
-        public DbSet<Utilisateur> Users { get; set; }
-
         public DbSet<Commande> Commandes { get; set; }
 
         public DbSet<Historique> Historiques { get; set; }
 
 
-        //Configuration à la base de données MySql
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public class NegosudContextFactory : IDesignTimeDbContextFactory<NegosudContext>
         {
-            var connexionString = "server=localhost;port=3306;userid=root;password=;database=Negosud;";
-            optionsBuilder.UseMySql(connexionString, ServerVersion.AutoDetect(connexionString));
+            public NegosudContext CreateDbContext(string[] args)
+            {
+                var connexionString = "server=localhost;port=3306;userid=root;password=;database=Negosud;";
+                var optionsBuilder = new DbContextOptionsBuilder<NegosudContext>();
+                optionsBuilder.UseMySql(connexionString, ServerVersion.AutoDetect(connexionString));
+
+                return new NegosudContext(optionsBuilder.Options);
+            }
         }
-        public NegosudContext() { }
-        public NegosudContext(DbContextOptions<NegosudContext> options) : base(options) { }
     }
 }

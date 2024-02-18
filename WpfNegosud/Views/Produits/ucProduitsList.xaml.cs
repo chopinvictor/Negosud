@@ -33,5 +33,10 @@ namespace NegosudWpf.Views
         {
             MainViewModel.Instance.CreateProduit();
         }
+
+        private void ReturnProduitList_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerProduitList();
+        }
     }
 }
