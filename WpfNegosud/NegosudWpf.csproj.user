@@ -30,9 +30,6 @@
     <Compile Update="Views\Fournisseurs\ucFournisseursList.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\produit\ucProduit.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\Clients\ucCreateClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -75,9 +72,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Fournisseurs\ucFournisseursList.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\produit\ucProduit.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Clients\ucCreateClient.xaml">
