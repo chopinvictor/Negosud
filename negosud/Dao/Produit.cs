@@ -34,6 +34,5 @@ namespace Negosud.Class
         // Fournisseurs
         public virtual List<Historique>? ListHistorique { get; set; } = null!;
 
-        public int Quantite {  get; set; }
     }
 }

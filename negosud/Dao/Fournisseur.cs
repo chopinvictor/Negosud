@@ -18,8 +18,6 @@ namespace Negosud.Class
         [StringLength(80)]
         public string PaysFournisseur { get; set; } = string.Empty;
 
-        public string VilleFournisseur { get; set; } = string.Empty;
-
         public string TelephoneFournisseur { get; set; } = string.Empty;
 
         [StringLength(80)]

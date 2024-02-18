@@ -18,6 +18,5 @@ namespace Negosud.Class
         [StringLength(80)]
         public string PaysDomaine { get; set; } = string.Empty;
 
-        public string VilleDomaine { get; set; } = string.Empty;
     }
 }
