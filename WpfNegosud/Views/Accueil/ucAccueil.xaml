@@ -22,8 +22,6 @@
         </Grid.ColumnDefinitions>
 
 
-        <Button Grid.Column="1" Grid.Row="1" Content="Deconnexion" Margin="530,0,0,0"/>
-
 
         <StackPanel Grid.Row="3" Grid.Column="1">
 
