@@ -18,7 +18,7 @@ namespace NegosudWpf.Views.Clients
             InitializeComponent();
         }
 
-        public int DomaineId {  get; set; }
+        public int DomaineId { get; set; }
 
         public int TypeId { get; set; }
 
@@ -60,5 +60,7 @@ namespace NegosudWpf.Views.Clients
         {
             MainViewModel.Instance.ChargerProduitList();
         }
+
+
     }
 }

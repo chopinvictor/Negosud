@@ -46,5 +46,10 @@ namespace NegosudWpf.Views
         {
             MainViewModel.Instance.ChargerProduitList();
         }
+
+        private void MenuClients_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerClientList();
+        }
     }
 }

@@ -36,5 +36,15 @@ namespace NegosudWpf.Views.Accueil
             MainViewModel.Instance.ChargerClientList();
 
         }
+
+        private void MenuVentes_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerCreateVente();
+        }
+
+        private void MenuProduits_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerProduitList();
+        }
     }
 }

@@ -10,11 +10,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="asset\LogoNegoSudRouge.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\negosud\Negosud.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="asset\LogoNegoSudRouge.png" />
   </ItemGroup>
 
   <ItemGroup>

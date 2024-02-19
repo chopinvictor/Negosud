@@ -94,5 +94,10 @@ namespace NegosudWpf.Views
             var btn = sender as Button;
             MainViewModel.Instance.ChargerCommandeProduit(((ProduitsViewModel)btn.DataContext).ProduitId, ((ProduitsViewModel)btn.DataContext).ListeFournisseurs);
         }
+
+        private void MenuProduits_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerProduitList();
+        }
     }
 }

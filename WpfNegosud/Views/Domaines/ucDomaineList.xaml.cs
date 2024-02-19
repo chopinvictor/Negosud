@@ -32,9 +32,11 @@ namespace NegosudWpf.Views.Domaines
             var btn = sender as Button;
             MainViewModel.Instance.ChargerDomaine(((Domaine)btn.DataContext).Id);
         }
-       private void DomaineCreate_Click(object sender, RoutedEventArgs e)
-       {
+        private void DomaineCreate_Click(object sender, RoutedEventArgs e)
+        {
             MainViewModel.Instance.CreateDomaine();
-       }
+        }
+
+
     }
 }
