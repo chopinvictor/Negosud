@@ -375,7 +375,7 @@ namespace NegosudWpf.Services
             throw new Exception(response.ReasonPhrase);
         }
 
-        public static async Task CreateCommande(Commande commande)
+        public static async Task<Commande> CreateCommande(Commande commande)
         {
             string route = $"Commandes";
             string json = JsonConvert.SerializeObject(commande);
@@ -386,9 +386,15 @@ namespace NegosudWpf.Services
 
             var response = await Client.PostAsync(route, byteContent);
 
+
             if (!response.IsSuccessStatusCode)
             {
                 throw new Exception(response.ReasonPhrase);
+            }
+            else
+            {
+                var res = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Commande>(res) ?? throw new FormatException("Erreur lors de la récupération de la commande");
             }
         }
 

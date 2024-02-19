@@ -17,11 +17,11 @@ namespace Negosud.Class
         [ForeignKey(nameof(Commande))]
         public int CommandeId { get; set; }
 
-        public virtual Commande Commande { get; set; } = null!;
+        public virtual Commande? Commande { get; set; }
 
         [ForeignKey(nameof(Produit))]
         public int ProduitId { get; set; }
 
-        public virtual Produit Produit { get; set; } = null!;
+        public virtual Produit? Produit { get; set; }
     }
 }

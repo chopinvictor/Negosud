@@ -28,14 +28,15 @@ namespace NegosudWpf.ViewModels
         public ObservableCollection<Commande> ListeCommandes { get; set; }
 
         public ObservableCollection<Fournisseur> ListeFournisseurs { get; set; }
+        public ObservableCollection<Client> ListeClients { get; set; }
+        public ObservableCollection<ProduitDto> ListeProduits { get; set; }
 
         public Transaction Transaction { get; set; } = new Transaction();
 
-        public double PrixTotal { get; set; }
-
-
         public CommandesViewModel()
         {
+            GetAllProduits();
+            GetAllClients();
         }
 
         public async void GetCommande(int commandeId)
@@ -50,10 +51,22 @@ namespace NegosudWpf.ViewModels
             ListeCommandes = await HttpClientService.GetAllCommandes();
             OnPropertyChanged(nameof(ListeCommandes));
         }
-
-        public async void CreateCommande(Commande commande)
+        
+        public async void GetAllClients()
         {
-            await HttpClientService.CreateCommande(commande);
+            ListeClients = await HttpClientService.GetAllClients();
+            OnPropertyChanged(nameof(ListeClients));
+        }
+        
+        public async void GetAllProduits()
+        {
+            ListeProduits = await HttpClientService.GetAllProduits();
+            OnPropertyChanged(nameof(ListeProduits));
+        }
+
+        public async Task<Commande> CreateCommande(Commande commande)
+        {
+            return await HttpClientService.CreateCommande(commande);
         }
 
         public async void UpdateCommande(Commande commande)

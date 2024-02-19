@@ -6,6 +6,7 @@ using NegosudWpf.Views.Commandes_;
 using NegosudWpf.Views.Domaines;
 using NegosudWpf.Views.Fournisseurs;
 using NegosudWpf.Views.Transactions;
+using NegosudWpf.Views.Ventes;
 using System.Collections.ObjectModel;
 using System.ComponentModel.Design;
 using System.Windows.Controls;
@@ -173,6 +174,13 @@ namespace NegosudWpf.ViewModels
             uc.DataContext = new CommandesViewModel();
             ((CommandesViewModel)uc.DataContext).GetCommande(commandeId);
             ((CommandesViewModel)uc.DataContext).ProduitId = produitId;
+            UserControl = uc;
+        }
+
+        public void ChargerCreateVente()
+        {
+            var uc = new ucCreateVente();
+            uc.DataContext = new CommandesViewModel();
             UserControl = uc;
         }
 

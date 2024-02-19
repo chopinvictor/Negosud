@@ -35,5 +35,10 @@ namespace NegosudWpf.Views.Shared
         {
             MainViewModel.Instance.ChargerDomaineList();
         }
+
+        private void MenuVentes_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerCreateVente();
+        }
     }
 }

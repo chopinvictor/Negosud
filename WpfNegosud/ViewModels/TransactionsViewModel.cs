@@ -37,8 +37,6 @@ namespace NegosudWpf.ViewModels
         public TransactionsViewModel()
         {
             GetAllCommandes();
-
-            var test = ListeCommandes.LastOrDefault();
         }
 
         public async void GetCommande(int commandeId)

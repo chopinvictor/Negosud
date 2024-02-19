@@ -16,6 +16,6 @@
         <MenuItem Header="Clients" Click="MenuClients_Click" />
         <MenuItem Header="Fournisseurs" Click="MenuFournisseurs_Click" />
         <MenuItem Header="Domaines" Click="MenuDomaines_Click" />
-        <MenuItem Header="Vente" />
+        <MenuItem Header="Vente" Click="MenuVentes_Click"/>
     </Menu>
 </UserControl>
