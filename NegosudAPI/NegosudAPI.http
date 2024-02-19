@@ -4,3 +4,5 @@ GET {{NegosudAPI_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET https://localhost:7226/api/Commandes

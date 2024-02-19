@@ -7,58 +7,137 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Border Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="287*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Margin="52,0,0,0">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="350"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="5*"/>
                 </Grid.ColumnDefinitions>
+
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="300"/>
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="10"/>
+                    <!--0-->
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="15"/>
+                    <!--5-->
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <!--10-->
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="20"/>
+                    <!--15-->
+
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="1" Grid.Column="1"
-                       Text="Créer un client"/>
-                <Border Grid.Row="2" Grid.Column="1"
-                    Background="#9C1814"
-                    Opacity="0.75">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15"/>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="15"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="15"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="15"/>
-                        </Grid.RowDefinitions>
-                        <StackPanel Grid.Row="1" Grid.Column="1">
-                            <TextBlock Text="Nom" Foreground="White"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Name="Nom" Text="{Binding Produit.NomProduit}"/>
 
-                            <TextBlock Text="Nombre Stock" Foreground="White"/>
-                            <TextBox  Grid.Row="3" Grid.Column="1" Name="Nb" Text="{Binding Produit.NbProduit}"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="Produit" ></TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="Nom"></TextBlock>
+                <TextBox   Grid.Row="4" Grid.Column="1" Name="Nom" Grid.ColumnSpan="4" Margin="0,0,21,0" Text="{Binding Produit.Nom}"></TextBox>
 
-                            <TextBlock Text="Prix unitaire" Foreground="White"/>
-                            <TextBox  Grid.Row="5" Grid.Column="1" Name="Prix" Text="{Binding Produit.PrixProduit}"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-                <Grid Grid.Row="3" Grid.Column="1" Margin="0 10 0 10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Content="Créer" Click="CreateClientValidation_Click"/>
-                    <Button Grid.Column="2" Content="Annuler" />
-                </Grid>
+                <TextBlock Grid.Row="6" Grid.Column="1" Text="Type" ></TextBlock>
+                <ComboBox Name="comboBoxTypeList"
+                Grid.Row="7" Grid.Column="1"
+                Text="{Binding Produit.Type.NomType}"
+                IsEditable="true"
+                IsReadOnly="true" Grid.ColumnSpan="4" Margin="0,0,21,0"
+                ItemsSource="{Binding ListeTypes}"
+                DisplayMemberPath="NomType" 
+                SelectionChanged="comboBoxTypeList_SelectionChanged"/>
+
+                <TextBlock Grid.Row="9" Grid.Column="3" Text="Quantité min" ></TextBlock>
+                <TextBox   Grid.Row="10" Grid.Column="3" Name="Qte" Text="{Binding Produit.Quantite}"></TextBox>
+
+                <TextBlock Grid.Row="12" Grid.Column="1" Text="Prix"></TextBlock>
+                <TextBox   Grid.Row="13" Grid.Column="1" Name="Prix" Text="{Binding Produit.Prix}"></TextBox>
+
             </Grid>
-        </Border>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Content="Créer" Width="100" Margin="5" Click="CreateProduit_Click"/>
+                <Button Content="Retour" Width="100" Margin="5"/>
+            </StackPanel>
+        </StackPanel>
+
+
+
+
+        <StackPanel Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Margin="0,0,52,161">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <!--0-->
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="15"/>
+                    <!--5-->
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="10"/>
+                    <!--10-->
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="Domaine" ></TextBlock>
+
+                <ComboBox Name="comboBoxDomaineList"
+                Grid.Row="1" Grid.Column="3"
+                IsEditable="true"
+                IsReadOnly="true"
+                ItemsSource="{Binding ListeDomaines}"
+                DisplayMemberPath="NomDomaine"
+                SelectionChanged="comboBoxDomaineList_SelectionChanged"
+                Text="{Binding Produit.Domaine.NomDomaine}">
+                </ComboBox>
+
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="Nom"></TextBlock>
+                <TextBox IsReadOnly="true" Grid.Row="4" Grid.Column="1" Name="DomaineNom" Text="{Binding Produit.Domaine.NomDomaine}"/>
+
+                <TextBlock Grid.Row="6" Grid.Column="1" Text="Adresse"></TextBlock>
+                <TextBox IsReadOnly="true" Grid.Row="7" Grid.Column="1" Name="DomaineAdresse" Grid.ColumnSpan="3" Margin="0,0,2,0" Text="{Binding Produit.Domaine.AdresseDomaine}"/>
+                <TextBox IsReadOnly="true" Grid.Row="9" Grid.Column="1" Name="DomaineCP" Text="{Binding Produit.Domaine.CodePostalDomaine}" />
+                <TextBox IsReadOnly="true" Grid.Row="9" Grid.Column="3" Name="DomainePays" Text="{Binding Produit.Domaine.PaysDomaine}"/>
+                <TextBox IsReadOnly="true" Grid.Row="11" Grid.Column="1" Name="DomaineVille" Text="{Binding Produit.Domaine.VilleDomaine}"/>
+
+            </Grid>
+
+        </StackPanel>
     </Grid>
 </UserControl>

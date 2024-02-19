@@ -2,8 +2,12 @@
 using NegosudWpf.Views;
 using NegosudWpf.Views.Accueil;
 using NegosudWpf.Views.Clients;
+using NegosudWpf.Views.Commandes_;
 using NegosudWpf.Views.Domaines;
 using NegosudWpf.Views.Fournisseurs;
+using NegosudWpf.Views.Transactions;
+using System.Collections.ObjectModel;
+using System.ComponentModel.Design;
 using System.Windows.Controls;
 
 namespace NegosudWpf.ViewModels
@@ -79,7 +83,7 @@ namespace NegosudWpf.ViewModels
 
         public void CreateProduit()
         {
-            var uc = new ucProduitControl();
+            var uc = new ucCreateProduit();
             uc.DataContext = new ProduitsViewModel();
             UserControl = uc;
         }
@@ -132,6 +136,52 @@ namespace NegosudWpf.ViewModels
             uc.DataContext = new DomainesViewModel();
             UserControl = uc;
         }
+        public void ChargerCommande()
+        {
+            var uc = new ucCreateTransaction();
+            uc.DataContext = new TransactionsViewModel();
+            UserControl = uc;
+        }
+
+        public void ChargerCommandeProduit(int produitId, ObservableCollection<Fournisseur> fournisseursList)
+        {
+            var uc = new ucCreateCommande();
+            uc.DataContext = new CommandesViewModel();
+            ((CommandesViewModel)uc.DataContext).ProduitId = produitId;
+            ((CommandesViewModel)uc.DataContext).ListeFournisseurs = fournisseursList;
+            UserControl = uc;
+        }
+
+        public void CreateTransac(Commande commande, double pu, int nb, int pointid)
+        {
+            var transaction = new Transaction()
+            {
+                Description = "Achat",
+                NbProduit = nb,
+                Prix = pu,
+                CommandeId = commande.Id
+            };
+            CommandesViewModel.Instance.CreateTransaction(transaction);
+            MainViewModel.Instance.ChargerProduitList();
+            //MainViewModel.Instance.ChargerRecap(commandeId, CommandesViewModel.Instance.ProduitId);
+        }
+
+        public void ChargerRecap(int commandeId, int produitId)
+        {
+            var uc = new ucRecapCommande();
+            uc.DataContext = new CommandesViewModel();
+            ((CommandesViewModel)uc.DataContext).GetCommande(commandeId);
+            ((CommandesViewModel)uc.DataContext).ProduitId = produitId;
+            UserControl = uc;
+        }
+
+
+        //public void CreateCommande()
+        //{
+        //    var uc = new ucCreateCommande();
+        //    uc.DataContext = new CommandesViewModel();
+        //    UserControl = uc;
+        //}
 
     }
 }

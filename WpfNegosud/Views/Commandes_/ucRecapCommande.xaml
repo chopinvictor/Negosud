@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="NegosudWpf.Views.Commandes_.ucRecapCommande"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NegosudWpf.Views.Commandes_"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Border Background="Transparent">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="350"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="1"
+                       Text="Récapitulatif de la commande"/>
+                <Border Grid.Row="2" Grid.Column="1"
+                    Background="#9C1814"
+                    Opacity="0.75">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="15"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="15"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="1" Grid.Column="1">
+                            <TextBlock Text="Date de la Commande" Foreground="White"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Name="Date" Text="{Binding Commande.DateCommande}" IsReadOnly="true"/>
+                            
+                            <TextBlock Text="Fournisseur" Foreground="White"/>
+
+                            <TextBlock Text="Nom" Foreground="White"/>
+                            <TextBox  Grid.Row="3" Grid.Column="1" Name="NomF" Text="{Binding Fournisseur.NomFournisseur}" IsReadOnly="true"/>
+
+                            <TextBlock Text="Adresse" Foreground="White"/>
+                            <TextBox  Grid.Row="5" Grid.Column="1" Name="AdresseF" Text="{Binding Fournisseur.AddresseFournisseur}" IsReadOnly="true"/>
+
+                            <TextBlock Text="Code postal" Foreground="White"/>
+                            <TextBox  Grid.Row="7" Grid.Column="1" Name="CPF" Text="{Binding Fournisseur.CodePostalFournisseur}" IsReadOnly="true"/>
+
+                            <TextBlock Text="Ville" Foreground="White"/>
+                            <TextBox  Grid.Row="9" Grid.Column="1" Name="VilleF" Text="{Binding Fournisseur.VilleFournisseur}" IsReadOnly="true"/>
+
+                            <TextBlock Text="Pays" Foreground="White"/>
+                            <TextBox  Grid.Row="11" Grid.Column="1" Name="PaysF" Text="{Binding Fournisseur.PaysFournisseur}" IsReadOnly="true"/>
+
+                            <TextBlock Text="Téléphone" Foreground="White"/>
+                            <TextBox  Grid.Row="13" Grid.Column="1" Name="TelF" Text="{Binding Fournisseur.TelephoneFournisseur}" IsReadOnly="true"/>
+                            
+                            <TextBlock Text="Produit" Foreground="White"/>
+
+                            <TextBlock Text="Nom" Foreground="White"/>
+                            <TextBox  Grid.Row="15" Grid.Column="1" Name="NomP" Text="{Binding Produit.NomProduit}" IsReadOnly="true"/>
+                            
+                            <TextBlock Text="Quantité" Foreground="White"/>
+                            <TextBox  Grid.Row="15" Grid.Column="1" Name="Nb" Text="{Binding Transaction.NbProduit}" IsReadOnly="true"/> 
+                            
+                            <TextBlock Text="Prix à l'unité" Foreground="White"/>
+                            <TextBox  Grid.Row="15" Grid.Column="1" Name="Pu" Text="{Binding Produit.PrixProduit}" IsReadOnly="true"/>
+                            
+                            <TextBlock Text="Total" Foreground="White"/>
+                            <TextBox  Grid.Row="15" Grid.Column="1" Name="Pt" Text="{Binding Transaction.PrixTotal}" IsReadOnly="true"/> 
+
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Button Grid.Column="4" Content="Retour"/>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

@@ -30,7 +30,8 @@ namespace NegosudWpf.Services
             }
         }
 
-        // Client
+        #region Clients
+
         public static async Task<Client> GetClient(int clientId)
         {
             string route = $"Clients/{clientId}";
@@ -102,7 +103,7 @@ namespace NegosudWpf.Services
                 throw new Exception($"{response.ReasonPhrase}");
             }
         }
-
+        #endregion
 
         #region Produits
 
@@ -177,36 +178,7 @@ namespace NegosudWpf.Services
                 throw new Exception($"{response.ReasonPhrase}");
             }
         }
-
-        // Fournisseur
-        public static async Task<Fournisseur> GetFournisseur(int fournisseurId)
-        {
-            string route = $"Fournisseurs/{fournisseurId}";
-            var response = await Client.GetAsync(route);
-            if (response.IsSuccessStatusCode)
-            {
-                string resultat = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<Fournisseur>(resultat)
-                    ?? throw new FormatException($"Erreur http : {route} ");
-            }
-            throw new Exception(response.ReasonPhrase);
-        }
-
-        public static async Task<ObservableCollection<Fournisseur>> GetAllFournisseurs()
-        {
-            string route = $"Fournisseurs";
-            var response = await Client.GetAsync(route);
-            if (response.IsSuccessStatusCode)
-            {
-                string result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<ObservableCollection<Fournisseur>>(result)
-                ?? throw new Exception($"Erreur http : {route} ");
-            }
-            throw new Exception(response.ReasonPhrase);
-        }
-
         #endregion
-
 
         #region Domaines
 
@@ -299,6 +271,33 @@ namespace NegosudWpf.Services
         }
         #endregion
 
+        #region Fournisseurs
+
+        public static async Task<Fournisseur> GetFournisseur(int fournisseurId)
+        {
+            string route = $"Fournisseurs/{fournisseurId}";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string resultat = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Fournisseur>(resultat)
+                    ?? throw new FormatException($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task<ObservableCollection<Fournisseur>> GetAllFournisseurs()
+        {
+            string route = $"Fournisseurs";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ObservableCollection<Fournisseur>>(result)
+                ?? throw new Exception($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
 
         public static async Task CreateFournisseur(Fournisseur fournisseur)
         {
@@ -346,6 +345,158 @@ namespace NegosudWpf.Services
             }
         }
 
-        
+        #endregion
+
+        #region Commandes
+
+        public static async Task<Commande> GetCommande(int commandeId)
+        {
+            string route = $"Commandes/{commandeId}";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string resultat = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Commande>(resultat)
+                    ?? throw new FormatException($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task<ObservableCollection<Commande>> GetAllCommandes()
+        {
+            string route = $"Commandes";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ObservableCollection<Commande>>(result)
+                ?? throw new Exception($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task CreateCommande(Commande commande)
+        {
+            string route = $"Commandes";
+            string json = JsonConvert.SerializeObject(commande);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            var response = await Client.PostAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+        public static async Task DeleteCommande(int id)
+        {
+            string route = $"Commandes/{id}";
+            var response = await Client.DeleteAsync(route);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+        public static async Task UpdateCommande(Commande commande)
+        {
+            string route = $"Commandes/{commande.Id}";
+
+            string json = JsonConvert.SerializeObject(commande);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PutAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"{response.ReasonPhrase}");
+            }
+        }
+
+        #endregion
+
+        #region Transaction
+
+        public static async Task<Transaction> GetTransaction(int transactionId)
+        {
+            string route = $"Transactions/{transactionId}";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string resultat = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<Transaction>(resultat)
+                    ?? throw new FormatException($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task<ObservableCollection<Transaction>> GetAllTransactions()
+        {
+            string route = $"Transactions";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ObservableCollection<Transaction>>(result)
+                ?? throw new Exception($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task CreateTransaction(Transaction transaction)
+        {
+            string route = $"Transactions";
+            string json = JsonConvert.SerializeObject(transaction);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PostAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+        public static async Task DeleteTransaction(int id)
+        {
+            string route = $"Transactions/{id}";
+            var response = await Client.DeleteAsync(route);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
+        public static async Task UpdateTransaction(Transaction transaction)
+        {
+            string route = $"Transactions/{transaction.Id}";
+
+            string json = JsonConvert.SerializeObject(transaction);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PutAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"{response.ReasonPhrase}");
+            }
+        }
+
+        #endregion
     }
 }

@@ -1,7 +1,10 @@
 ﻿using Negosud.Class;
+using Negosud.Dto;
 using NegosudWpf.ViewModels;
+using System;
 using System.Windows;
 using System.Windows.Controls;
+using Type = Negosud.Class.Type;
 
 namespace NegosudWpf.Views.Clients
 {
@@ -15,23 +18,41 @@ namespace NegosudWpf.Views.Clients
             InitializeComponent();
         }
 
-        private void CreateClientValidation_Click(object sender, RoutedEventArgs e)
+        public int DomaineId {  get; set; }
+
+        public int TypeId { get; set; }
+
+        private void CreateProduit_Click(object sender, RoutedEventArgs e)
         {
-            var temp = Prix.Text.Replace(".", ",");
-
-            double prix;
-            double.TryParse(temp, out prix);
-
-            int nombre;
-            int.TryParse(Nb.Text, out nombre);
+            var prix = Prix.Text.Replace(".", ",");
 
             var produit = new Produit()
             {
                 NomProduit = Nom.Text,
-                PrixProduit = prix,
-                NbProduit = nombre
+                DomaineID = ((Domaine)comboBoxDomaineList.SelectedItem).Id,
+                PrixProduit = double.Parse(prix),
+                TypeID = ((Type)comboBoxTypeList.SelectedItem).Id,
+                Quantite = int.Parse(Qte.Text)
             };
+
             ProduitsViewModel.Instance.CreateProduit(produit);
+        }
+
+        private void comboBoxDomaineList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Domaine domaine = (Domaine)((ComboBox)sender).SelectedItem;
+            DomaineNom.Text = domaine.NomDomaine;
+            DomaineAdresse.Text = domaine.AdresseDomaine;
+            DomaineCP.Text = domaine.CodePostalDomaine;
+            DomainePays.Text = domaine.PaysDomaine;
+            DomaineVille.Text = domaine.VilleDomaine;
+            DomaineId = domaine.Id;
+        }
+
+        private void comboBoxTypeList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Type type = (Type)((ComboBox)sender).SelectedItem;
+            TypeId = type.Id;
         }
     }
 }

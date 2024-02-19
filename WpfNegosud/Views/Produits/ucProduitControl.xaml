@@ -68,7 +68,7 @@
                     IsReadOnly="true" Grid.ColumnSpan="4" Margin="0,0,21,0"
                     ItemsSource="{Binding ListeTypes}"
                     DisplayMemberPath="NomType" 
-                    SelectionChanged="comboBoxTypeList_SelectionChanged"/>
+                    SelectionChanged="comboBoxTypeList_SelectionChanged" />
 
                 <TextBlock Grid.Row="9" Grid.Column="1" Text="Stock" ></TextBlock>
                 <TextBlock Grid.Row="9" Grid.Column="3" Text="Quantité min" ></TextBlock>
@@ -83,7 +83,7 @@
                 <Button Content="Modifier" Width="100" Margin="5" Click="UpdateProduitValidation_Click"/>
                 <Button Content="Supprimer" Width="100" Margin="5"/>
                 <Button Content="Retour" Width="100" Margin="5"/>
-                <Button Content="Commander" Width="100" Margin="50 5 5 5"/>
+                <Button Content="Commander" Width="100" Margin="50 5 5 5" Click="CommanderProduit_Click"/>
             </StackPanel>
         </StackPanel>
 
