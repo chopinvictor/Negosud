@@ -73,6 +73,14 @@ namespace NegosudWpf.ViewModels
             OnPropertyChanged(nameof(ListeProduits));
         }
 
+        public async Task GetAllDomAndType()
+        {
+            ListeDomaines = await HttpClientService.GetAllDomaines();
+            ListeTypes = await HttpClientService.GetAllTypes();
+            OnPropertyChanged(nameof(ListeDomaines));
+            OnPropertyChanged(nameof(ListeTypes));
+        }
+
         public async void CreateProduit(Produit produit)
         {
             await HttpClientService.CreateProduit(produit);

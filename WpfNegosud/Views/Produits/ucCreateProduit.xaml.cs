@@ -36,6 +36,7 @@ namespace NegosudWpf.Views.Clients
             };
 
             ProduitsViewModel.Instance.CreateProduit(produit);
+            MainViewModel.Instance.ChargerProduitList();
         }
 
         private void comboBoxDomaineList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -53,6 +54,11 @@ namespace NegosudWpf.Views.Clients
         {
             Type type = (Type)((ComboBox)sender).SelectedItem;
             TypeId = type.Id;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerProduitList();
         }
     }
 }

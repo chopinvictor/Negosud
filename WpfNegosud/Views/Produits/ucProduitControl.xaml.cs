@@ -64,6 +64,7 @@ namespace NegosudWpf.Views
                 Quantite = qte
             };
             ProduitsViewModel.Instance.UpdateProduit(produit);
+            MainViewModel.Instance.ChargerProduitList();
         }
 
         private void DeleteProduit_Click(object sender, RoutedEventArgs e)

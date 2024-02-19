@@ -39,6 +39,12 @@ namespace NegosudWpf.Views
         private void DeleteClient_Click(object sender, RoutedEventArgs e)
         {
             ClientsViewModel.Instance.DeleteClient(ClientId);
+            MainViewModel.Instance.ChargerProduitList();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Instance.ChargerProduitList();
         }
     }
 }

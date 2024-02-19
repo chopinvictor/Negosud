@@ -85,6 +85,7 @@ namespace NegosudWpf.ViewModels
         {
             var uc = new ucCreateProduit();
             uc.DataContext = new ProduitsViewModel();
+            ((ProduitsViewModel)uc.DataContext).GetAllDomAndType();
             UserControl = uc;
         }
 
