@@ -82,7 +82,7 @@
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button Content="Modifier" Width="100" Margin="5" Click="UpdateProduitValidation_Click"/>
                 <Button Content="Supprimer" Width="100" Margin="5"/>
-                <Button Content="Retour" Width="100" Margin="5"/>
+                <Button Content="Retour" Width="100" Margin="5" Click="MenuProduits_Click"/>
                 <Button Content="Commander" Width="100" Margin="50 5 5 5" Click="CommanderProduit_Click"/>
             </StackPanel>
         </StackPanel>

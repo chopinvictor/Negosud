@@ -63,7 +63,7 @@
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Content="Créer" Click="CreateDomaineValidation_Click"/>
-                    <Button Grid.Column="2" Content="Annuler"/>
+                    <Button Grid.Column="2" Content="Retour" Click="MenuDomaines_Click"/>
                 </Grid>
             </Grid>
         </Border>

@@ -21,10 +21,7 @@
             <ColumnDefinition Width="45"/>
         </Grid.ColumnDefinitions>
 
-
-        <Button Grid.Column="1" Grid.Row="1" Content="Deconnexion" Margin="530,0,0,0"/>
-
-
+        
         <StackPanel Grid.Row="3" Grid.Column="1">
 
             <Grid>
@@ -42,9 +39,9 @@
                     <RowDefinition Height="140"/>
                 </Grid.RowDefinitions>
 
-                <Button Background="#F4A261" Grid.Row="0" Grid.Column="0" >Stock</Button>
+                <Button Background="#F4A261" Grid.Row="0" Grid.Column="0" Click="MenuProduits_Click" >Stock</Button>
                 <Button Background="#F4A261" Grid.Row="2" Grid.Column="0" Click="MenuClients_Click">Clients</Button>
-                <Button Background="#F4A261" Grid.Row="2" Grid.Column="2">Vente</Button>
+                <Button Background="#F4A261" Grid.Row="2" Grid.Column="2" Click="MenuVentes_Click">Vente</Button>
                 <Image Source="/asset/LogoNegoSudRouge.png" Grid.Row="0" Margin="45,-108,50,12" Grid.ColumnSpan="3" Grid.Column="1" Grid.RowSpan="2"/>
                 <Button Background="#F4A261" Grid.Row="2" Grid.Column="4" Click="MenuFournisseurs_Click">Fournisseurs</Button>
                 <Button Background="#F4A261" Grid.Row="0" Grid.Column="4">Employés</Button>

@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="asset\LogoNegoSudRouge.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
@@ -21,6 +25,10 @@
     <Compile Update="Views\Commandes_\ucRecapCommande.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Resource Include="asset\LogoNegoSudRouge.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Views\Transactions\ucTransactionList.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
