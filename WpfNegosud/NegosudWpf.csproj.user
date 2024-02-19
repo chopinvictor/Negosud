@@ -18,9 +18,6 @@
     <Compile Update="Views\Commandes_\ucCreateCommande.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Commandes_\ucRecapCommande.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\Domaines\ucCreateDomaine.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -53,6 +50,9 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\Commandes_\ucRecapCommande.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Transactions\ucTransactionList.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -63,9 +63,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Commandes_\ucCreateCommande.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Views\Commandes_\ucRecapCommande.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Produits\ucProduitControl.xaml">

@@ -18,6 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\Commandes_\ucRecapCommande.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Transactions\ucTransactionList.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

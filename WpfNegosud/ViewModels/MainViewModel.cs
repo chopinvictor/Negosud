@@ -1,4 +1,5 @@
 ﻿using Negosud.Class;
+using Negosud.Dto;
 using NegosudWpf.Views;
 using NegosudWpf.Views.Accueil;
 using NegosudWpf.Views.Clients;
@@ -145,27 +146,14 @@ namespace NegosudWpf.ViewModels
             UserControl = uc;
         }
 
-        public void ChargerCommandeProduit(int produitId, ObservableCollection<Fournisseur> fournisseursList)
+        public void ChargerCommandeProduit(ProduitDto produit, ObservableCollection<Fournisseur> fournisseursList)
         {
             var uc = new ucCreateCommande();
             uc.DataContext = new CommandesViewModel();
-            ((CommandesViewModel)uc.DataContext).ProduitId = produitId;
+            ((CommandesViewModel)uc.DataContext).ProduitId = produit.Id;
             ((CommandesViewModel)uc.DataContext).ListeFournisseurs = fournisseursList;
+            ((CommandesViewModel)uc.DataContext).Produit = produit;
             UserControl = uc;
-        }
-
-        public void CreateTransac(Commande commande, double pu, int nb, int pointid)
-        {
-            var transaction = new Transaction()
-            {
-                Description = "Achat",
-                NbProduit = nb,
-                Prix = pu,
-                CommandeId = commande.Id
-            };
-            CommandesViewModel.Instance.CreateTransaction(transaction);
-            MainViewModel.Instance.ChargerProduitList();
-            //MainViewModel.Instance.ChargerRecap(commandeId, CommandesViewModel.Instance.ProduitId);
         }
 
         public void ChargerRecap(int commandeId, int produitId)
