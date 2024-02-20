@@ -4,7 +4,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Policy;
@@ -28,6 +30,25 @@ namespace NegosudWpf.Services
                     client = new() { BaseAddress = new Uri(baseAddress) };
                 return client;
             }
+        }
+
+        public static async Task<bool> Login(string email, string pwd)
+        {
+            string route = "login?useCookies=true&useSessionCookies=true";
+            var jsonString = JsonConvert.SerializeObject(new LoginUser
+            {
+                Email = email,
+                Password = pwd
+            });
+
+            var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            var response = await Client.PostAsync(route, httpContent);
+
+            var cookies = cookieContainer.GetCookies(new Uri(baseAddress));
+            Debug.WriteLine(cookies);
+
+            return response.IsSuccessStatusCode ? true :
+                throw new Exception(response.ReasonPhrase);
         }
 
         #region Clients

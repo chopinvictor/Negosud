@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Negosud.Dao;
+using NegosudWpf.Model;
+using NegosudWpf.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +26,17 @@ namespace NegosudWpf.Views.Auth
         public uclogin()
         {
             InitializeComponent();
+        }
+
+        private void LoginValidation_Click(object sender, RoutedEventArgs e)
+        {
+            var log = new LoginUser()
+            {
+                Email = Email.Text,
+                Password = Password.Text,
+            };
+            // a changer
+            FournisseursViewModel.Instance.LoginUser(string Email, string Password);
         }
     }
 }
