@@ -18,8 +18,6 @@ namespace Negosud.Context
 
         public DbSet<Fournisseur> Fournisseurs { get; set; }
 
-        public DbSet<Utilisateur> Users { get; set; }
-
         public DbSet<Commande> Commandes { get; set; }
 
         public DbSet<Historique> Historiques { get; set; }
