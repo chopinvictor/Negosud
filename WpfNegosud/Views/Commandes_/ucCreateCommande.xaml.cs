@@ -39,42 +39,46 @@ namespace NegosudWpf.Views.Commandes_
                 Remise = 0
             };
 
-            var truc = new Commande();
-            
+
             Task.Run(async () =>
             {
-                truc = await CommandesViewModel.Instance.CreateCommande(commande);
+                return await CommandesViewModel.Instance.CreateCommande(commande);
+            }).ContinueWith(t =>
+            {
+                if (t.Result != null)
+                {
+                    var test = t.Result.Id;
+                    var tr = new Transaction()
+                    {
+                        CommandeId = test,
+                        Description = "Achat",
+                        Prix = pu,
+                        NbProduit = nb,
+                        ProduitId = ((CommandesViewModel)btn.DataContext).ProduitId
+                    };
+
+                    var prodDto = ((CommandesViewModel)btn.DataContext).Produit;
+                    var prod = new Produit()
+                    {
+                        Id = prodDto.Id,
+                        NbProduit = prodDto.Nombre,
+                        DomaineID = prodDto.Domaine.Id,
+                        TypeID = prodDto.Type.Id,
+                        Type = prodDto.Type,
+                        Domaine = prodDto.Domaine,
+                        NomProduit = prodDto.Nom,
+                        PrixProduit = prodDto.Prix,
+                        Quantite = prodDto.Quantite
+                    };
+
+                    prod.NbProduit += nb;
+
+                    TransactionsViewModel.Instance.CreateTransaction(tr);
+                    ProduitsViewModel.Instance.UpdateProduit(prod);
+                    MainViewModel.Instance.ChargerProduitList();
+
+                }
             });
-
-            var tr = new Transaction()
-            {
-                CommandeId = truc.Id,
-                Description = "Achat",
-                Prix = pu,
-                NbProduit = nb,
-                ProduitId = ((CommandesViewModel)btn.DataContext).ProduitId
-            };
-
-            var prodDto = ((CommandesViewModel)btn.DataContext).Produit;
-            var prod = new Produit()
-            {
-                Id = prodDto.Id,
-                NbProduit = prodDto.Nombre,
-                DomaineID = prodDto.Domaine.Id,
-                TypeID = prodDto.Type.Id,
-                Type = prodDto.Type,
-                Domaine = prodDto.Domaine,
-                NomProduit = prodDto.Nom,
-                PrixProduit = prodDto.Prix,
-                Quantite = prodDto.Quantite
-            };
-
-            prod.NbProduit += nb;
-
-            TransactionsViewModel.Instance.CreateTransaction(tr);
-            ProduitsViewModel.Instance.UpdateProduit(prod);
-
-            MainViewModel.Instance.ChargerProduitList();
         }
     }
 }
