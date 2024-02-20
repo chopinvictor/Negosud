@@ -1,5 +1,6 @@
 ﻿using Negosud.Class;
 using Negosud.Context;
+using static Negosud.Context.NegosudContext;
 using Type = Negosud.Class.Type;
 
 namespace NegosudAPI
@@ -8,7 +9,8 @@ namespace NegosudAPI
     {
         public static void SeedDatabase()
         {
-            using (var context = new NegosudContext())
+            var factory = new NegosudContextFactory();
+            using (var context = factory.CreateDbContext([]))
             {
 
 
