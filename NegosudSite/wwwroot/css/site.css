@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+  color: white;
 }
 
 @media (min-width: 768px) {
@@ -18,5 +19,11 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #343a40;
+    color: white;
+}
+
+li {
+    list-style: none;
 }
