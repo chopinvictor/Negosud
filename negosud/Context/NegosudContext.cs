@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Negosud.Class;
 using Type = Negosud.Class.Type;
 
@@ -34,4 +35,18 @@ namespace Negosud.Context
         public NegosudContext() { }
         public NegosudContext(DbContextOptions<NegosudContext> options) : base(options) { }
     }
+
+
+    public class NegosudContextFactory : IDesignTimeDbContextFactory<NegosudContext>
+    {
+        public NegosudContext CreateDbContext(string[] args)
+        {
+            var connexionString = "server=localhost;port=3306;userid=root;password=;database=Negosud;";
+            var optionsBuilder = new DbContextOptionsBuilder<NegosudContext>();
+            optionsBuilder.UseMySql(connexionString, ServerVersion.AutoDetect(connexionString));
+
+            return new NegosudContext(optionsBuilder.Options);
+        }
+    }
 }
+
