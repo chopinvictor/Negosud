@@ -12,7 +12,7 @@ namespace WpfNegosud
         {
             InitializeComponent();
             this.DataContext = MainViewModel.Instance;
-            MainViewModel.Instance.ChargerAccueil();
+            MainViewModel.Instance.ChargerLogin();
         }
     }
 }
