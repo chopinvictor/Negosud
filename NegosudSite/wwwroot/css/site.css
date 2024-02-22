@@ -42,10 +42,17 @@ nav{
     color: black;
 }
 a:link {
-    color: black;
+    color: white;
 }
 a:visited{
-    color:black;
+    color:white;
+}
+footer a:link {
+    color: black;
+}
+
+footer a:visited {
+    color: black;
 }
 .gold{
     color:darkgoldenrod;
