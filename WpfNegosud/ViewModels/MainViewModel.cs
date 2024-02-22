@@ -6,6 +6,7 @@ using NegosudWpf.Views.Clients;
 using NegosudWpf.Views.Commandes_;
 using NegosudWpf.Views.Domaines;
 using NegosudWpf.Views.Fournisseurs;
+using NegosudWpf.Views.Login;
 using NegosudWpf.Views.Transactions;
 using NegosudWpf.Views.Ventes;
 using System.Collections.ObjectModel;
@@ -30,6 +31,14 @@ namespace NegosudWpf.ViewModels
         {
             get { return userControl; }
             set { userControl = value; OnPropertyChanged(); }
+        }
+
+        //Login
+
+        public void ChargerLogin()
+        {
+            var uc = new ucLogin();
+            UserControl = uc;
         }
 
 

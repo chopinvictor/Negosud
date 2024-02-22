@@ -39,6 +39,9 @@
     <Compile Update="Views\Clients\ucCreateClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Login\ucLogin.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Shared\NavBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -51,6 +54,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Commandes_\ucRecapCommande.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Login\ucLogin.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Transactions\ucTransactionList.xaml">

@@ -1,5 +1,7 @@
 ﻿using Negosud.Class;
+using Negosud.Dao;
 using Negosud.Dto;
+using NegosudWpf.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,7 @@ namespace NegosudWpf.Services
 {
     public static class HttpClientService
     {
-        private const string baseAddress = "https://localhost:7226/api/";
+        private const string baseAddress = "https://localhost:7226/";
         private static HttpClient? client = null;
 
         private static HttpClient Client
@@ -34,7 +36,7 @@ namespace NegosudWpf.Services
 
         public static async Task<Client> GetClient(int clientId)
         {
-            string route = $"Clients/{clientId}";
+            string route = $"api/Clients/{clientId}";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -47,7 +49,7 @@ namespace NegosudWpf.Services
 
         public static async Task<ObservableCollection<Client>> GetAllClients()
         {
-            string route = $"Clients";
+            string route = $"api/Clients";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -60,7 +62,7 @@ namespace NegosudWpf.Services
 
         public static async Task CreateClient(Client client)
         {
-            string route = $"Clients";
+            string route = $"api/Clients";
             string json = JsonConvert.SerializeObject(client);
             var buffer = Encoding.UTF8.GetBytes(json);
 
@@ -77,7 +79,7 @@ namespace NegosudWpf.Services
 
         public static async Task DeleteClient(int id)
         {
-            string route = $"Clients/{id}";
+            string route = $"api/Clients/{id}";
             var response = await Client.DeleteAsync(route);
 
             if (!response.IsSuccessStatusCode)
@@ -88,7 +90,7 @@ namespace NegosudWpf.Services
 
         public static async Task UpdateClient(Client client)
         {
-            string route = $"Clients/{client.Id}";
+            string route = $"api/Clients/{client.Id}";
 
             string json = JsonConvert.SerializeObject(client);
             var buffer = Encoding.UTF8.GetBytes(json);
@@ -109,7 +111,7 @@ namespace NegosudWpf.Services
 
         public static async Task<ProduitDto> GetProduit(int produitId)
         {
-            string route = $"Produits/{produitId}";
+            string route = $"api/Produits/{produitId}";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -122,7 +124,7 @@ namespace NegosudWpf.Services
 
         public static async Task<ObservableCollection<ProduitDto>> GetAllProduits()
         {
-            string route = $"Produits";
+            string route = $"api/Produits";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -135,7 +137,7 @@ namespace NegosudWpf.Services
 
         public static async Task CreateProduit(Produit produit)
         {
-            string route = $"Produits";
+            string route = $"api/Produits";
             string json = JsonConvert.SerializeObject(produit);
             var buffer = Encoding.UTF8.GetBytes(json);
 
@@ -152,7 +154,7 @@ namespace NegosudWpf.Services
 
         public static async Task DeleteProduit(int id)
         {
-            string route = $"Produits/{id}";
+            string route = $"api/Produits/{id}";
             var response = await Client.DeleteAsync(route);
 
             if (!response.IsSuccessStatusCode)
@@ -163,7 +165,7 @@ namespace NegosudWpf.Services
 
         public static async Task UpdateProduit(Produit produit)
         {
-            string route = $"Produits/{produit.Id}";
+            string route = $"api/Produits/{produit.Id}";
 
             string json = JsonConvert.SerializeObject(produit);
             var buffer = Encoding.UTF8.GetBytes(json);
@@ -184,7 +186,7 @@ namespace NegosudWpf.Services
 
         public static async Task<Domaine> GetDomaine(int domaineId)
         {
-            string route = $"Domaines/{domaineId}";
+            string route = $"api/Domaines/{domaineId}";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -197,7 +199,7 @@ namespace NegosudWpf.Services
 
         public static async Task<ObservableCollection<Domaine>> GetAllDomaines()
         {
-            string route = $"Domaines";
+            string route = $"api/Domaines";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -210,7 +212,7 @@ namespace NegosudWpf.Services
 
         public static async Task CreateDomaine(Domaine domaine)
         {
-            string route = $"Domaines";
+            string route = $"api/Domaines";
             string json = JsonConvert.SerializeObject(domaine);
             var buffer = Encoding.UTF8.GetBytes(json);
 
@@ -227,7 +229,7 @@ namespace NegosudWpf.Services
 
         public static async Task DeleteDomaine(int id)
         {
-            string route = $"Domaines/{id}";
+            string route = $"api/Domaines/{id}";
             var response = await Client.DeleteAsync(route);
 
             if (!response.IsSuccessStatusCode)
@@ -238,7 +240,7 @@ namespace NegosudWpf.Services
 
         public static async Task UpdateDomaine(Domaine domaine)
         {
-            string route = $"Domaines/{domaine.Id}";
+            string route = $"api/Domaines/{domaine.Id}";
 
             string json = JsonConvert.SerializeObject(domaine);
             var buffer = Encoding.UTF8.GetBytes(json);
@@ -259,7 +261,7 @@ namespace NegosudWpf.Services
         #region Types
         public static async Task<ObservableCollection<Type>> GetAllTypes()
         {
-            string route = $"Types";
+            string route = $"api/Types";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -275,7 +277,7 @@ namespace NegosudWpf.Services
 
         public static async Task<Fournisseur> GetFournisseur(int fournisseurId)
         {
-            string route = $"Fournisseurs/{fournisseurId}";
+            string route = $"api/Fournisseurs/{fournisseurId}";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -288,7 +290,7 @@ namespace NegosudWpf.Services
 
         public static async Task<ObservableCollection<Fournisseur>> GetAllFournisseurs()
         {
-            string route = $"Fournisseurs";
+            string route = $"api/Fournisseurs";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -301,7 +303,7 @@ namespace NegosudWpf.Services
 
         public static async Task CreateFournisseur(Fournisseur fournisseur)
         {
-            string route = $"Fournisseurs";
+            string route = $"api/Fournisseurs";
             string json = JsonConvert.SerializeObject(fournisseur);
             var buffer = Encoding.UTF8.GetBytes(json);
 
@@ -318,7 +320,7 @@ namespace NegosudWpf.Services
 
         public static async Task UpdateFournisseur(Fournisseur fournisseur)
         {
-            string route = $"Fournisseurs/{fournisseur.Id}";
+            string route = $"api/Fournisseurs/{fournisseur.Id}";
 
             string json = JsonConvert.SerializeObject(fournisseur);
             var buffer = Encoding.UTF8.GetBytes(json);
@@ -336,7 +338,7 @@ namespace NegosudWpf.Services
 
         public static async Task DeleteFournisseur(int id)
         {
-            string route = $"Fournisseurs/{id}";
+            string route = $"api/Fournisseurs/{id}";
             var response = await Client.DeleteAsync(route);
 
             if (!response.IsSuccessStatusCode)
@@ -351,7 +353,7 @@ namespace NegosudWpf.Services
 
         public static async Task<Commande> GetCommande(int commandeId)
         {
-            string route = $"Commandes/{commandeId}";
+            string route = $"api/Commandes/{commandeId}";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -364,7 +366,7 @@ namespace NegosudWpf.Services
 
         public static async Task<ObservableCollection<Commande>> GetAllCommandes()
         {
-            string route = $"Commandes";
+            string route = $"api/Commandes";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -377,7 +379,7 @@ namespace NegosudWpf.Services
 
         public static async Task<Commande> CreateCommande(Commande commande)
         {
-            string route = $"Commandes";
+            string route = $"api/Commandes";
             string json = JsonConvert.SerializeObject(commande);
             var buffer = Encoding.UTF8.GetBytes(json);
 
@@ -400,7 +402,7 @@ namespace NegosudWpf.Services
 
         public static async Task DeleteCommande(int id)
         {
-            string route = $"Commandes/{id}";
+            string route = $"api/Commandes/{id}";
             var response = await Client.DeleteAsync(route);
 
             if (!response.IsSuccessStatusCode)
@@ -411,7 +413,7 @@ namespace NegosudWpf.Services
 
         public static async Task UpdateCommande(Commande commande)
         {
-            string route = $"Commandes/{commande.Id}";
+            string route = $"api/Commandes/{commande.Id}";
 
             string json = JsonConvert.SerializeObject(commande);
             var buffer = Encoding.UTF8.GetBytes(json);
@@ -433,7 +435,7 @@ namespace NegosudWpf.Services
 
         public static async Task<Transaction> GetTransaction(int transactionId)
         {
-            string route = $"Transactions/{transactionId}";
+            string route = $"api/Transactions/{transactionId}";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -446,7 +448,7 @@ namespace NegosudWpf.Services
 
         public static async Task<ObservableCollection<Transaction>> GetAllTransactions()
         {
-            string route = $"Transactions";
+            string route = $"api/Transactions";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -459,7 +461,7 @@ namespace NegosudWpf.Services
 
         public static async Task CreateTransaction(Transaction transaction)
         {
-            string route = $"Transactions";
+            string route = $"api/Transactions";
             string json = JsonConvert.SerializeObject(transaction);
             var buffer = Encoding.UTF8.GetBytes(json);
 
@@ -476,7 +478,7 @@ namespace NegosudWpf.Services
 
         public static async Task DeleteTransaction(int id)
         {
-            string route = $"Transactions/{id}";
+            string route = $"api/Transactions/{id}";
             var response = await Client.DeleteAsync(route);
 
             if (!response.IsSuccessStatusCode)
@@ -487,7 +489,7 @@ namespace NegosudWpf.Services
 
         public static async Task UpdateTransaction(Transaction transaction)
         {
-            string route = $"Transactions/{transaction.Id}";
+            string route = $"api/Transactions/{transaction.Id}";
 
             string json = JsonConvert.SerializeObject(transaction);
             var buffer = Encoding.UTF8.GetBytes(json);
@@ -502,6 +504,87 @@ namespace NegosudWpf.Services
                 throw new Exception($"{response.ReasonPhrase}");
             }
         }
+
+        #endregion
+
+        #region Authentification 
+
+        public static async Task<bool> Login(string email, string pwd)
+        {
+            string route = "login?useCookies=true&useSessionCookies=true";
+            var jsonString = JsonConvert.SerializeObject(new LoginUser
+            {
+                Email = email,
+                Password = pwd
+            });
+
+            var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            var response = await Client.PostAsync(route, httpContent);
+            return response.IsSuccessStatusCode ? true :
+                throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task<bool> Register(string email, string pwd)
+        {
+            string route = "register?useCookies=true&useSessionCookies=true";
+            var jsonString = JsonConvert.SerializeObject(new RegisterUser
+            {
+                Email = email,
+                Password = pwd
+            });
+
+            var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            var response = await Client.PostAsync(route, httpContent);
+            return response.IsSuccessStatusCode ? true :
+                throw new Exception(response.ReasonPhrase);
+        }
+
+
+        //public static async Task CreateUser(User User)
+        //{
+        //    string route = $"api/Produits";
+        //    string json = JsonConvert.SerializeObject(produit);
+        //    var buffer = Encoding.UTF8.GetBytes(json);
+
+        //    var byteContent = new ByteArrayContent(buffer);
+        //    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        //    HttpResponseMessage response = await Client.PostAsync(route, byteContent);
+
+        //    if (!response.IsSuccessStatusCode)
+        //    {
+        //        throw new Exception(response.ReasonPhrase);
+        //    }
+        //}
+
+        //public static async Task DeleteProduit(int id)
+        //{
+        //    string route = $"api/Produits/{id}";
+        //    var response = await Client.DeleteAsync(route);
+
+        //    if (!response.IsSuccessStatusCode)
+        //    {
+        //        throw new Exception(response.ReasonPhrase);
+        //    }
+        //}
+
+        //public static async Task UpdateProduit(Produit produit)
+        //{
+        //    string route = $"api/Produits/{produit.Id}";
+
+        //    string json = JsonConvert.SerializeObject(produit);
+        //    var buffer = Encoding.UTF8.GetBytes(json);
+        //    var byteContent = new ByteArrayContent(buffer);
+
+        //    byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        //    HttpResponseMessage response = await Client.PutAsync(route, byteContent);
+
+        //    if (!response.IsSuccessStatusCode)
+        //    {
+        //        throw new Exception($"{response.ReasonPhrase}");
+        //    }
+        //}
 
         #endregion
     }
