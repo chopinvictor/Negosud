@@ -1,6 +1,5 @@
 html {
   font-size: 14px;
-  color: white;
 }
 
 @media (min-width: 768px) {
@@ -35,14 +34,25 @@ nav{
     height:50px;
     display: flex;
 }
+.titreindex{
+    color:darkgoldenrod;
+}
 .footer {
-    background-color: grey;
-    color: white;
-    width:100%
+    background-color: white;
+    color: black;
 }
 a:link {
-    color: white;
+    color: black;
 }
 a:visited{
+    color:black;
+}
+.gold{
+    color:darkgoldenrod;
+}
+.tableliste{
     color:white;
+}
+.retirsoulign{
+    text-decoration: none;
 }
