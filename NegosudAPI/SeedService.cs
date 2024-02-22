@@ -8,7 +8,8 @@ namespace NegosudAPI
     {
         public static void SeedDatabase()
         {
-            using (var context = new NegosudContext())
+            var factory = new NegosudContextFactory();
+            using (var context = factory.CreateDbContext([]))
             {
 
 
