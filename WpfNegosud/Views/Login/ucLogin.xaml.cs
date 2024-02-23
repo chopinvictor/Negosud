@@ -27,7 +27,7 @@ namespace NegosudWpf.Views.Login
             InitializeComponent();
         }
 
-        private void Valider_Click(object sender, RoutedEventArgs e)
+        private async void Valider_Click(object sender, RoutedEventArgs e)
         {
             var Login = new LoginUser()
             {
@@ -36,9 +36,20 @@ namespace NegosudWpf.Views.Login
 
             };
 
+            
+            
+            var IsConnected = await LoginViewModel.Instance.Login(Login.Email, Login.Password);
 
-            LoginViewModel.Instance.Login(Login.Email, Login.Password);
-            MainViewModel.Instance.ChargerAccueil();
+            
+            if (IsConnected)
+            {
+                MainViewModel.Instance.ChargerAccueil();
+            }
+            else
+            {
+                MessageBox.Show("Identifiants ou mot de passe incorrects. Veuillez réessayer.");
+            };
         }
     }
 }
+

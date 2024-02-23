@@ -520,8 +520,7 @@ namespace NegosudWpf.Services
 
             var httpContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
             var response = await Client.PostAsync(route, httpContent);
-            return response.IsSuccessStatusCode ? true :
-                throw new Exception(response.ReasonPhrase);
+            return response.IsSuccessStatusCode ? true : false;
         }
 
         public static async Task<bool> Register(string email, string pwd)

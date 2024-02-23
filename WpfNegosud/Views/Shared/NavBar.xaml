@@ -11,11 +11,13 @@
             <Image Source="/asset/LogoNegoSudRouge.png" Width="30" Height="30"/>
 
         </StackPanel>
-        <MenuItem Header="Negosud" Click="MenuAccueil_Click"/>
-        <MenuItem Header="Stock" Click="MenuProduits_Click" />
-        <MenuItem Header="Clients" Click="MenuClients_Click" />
-        <MenuItem Header="Fournisseurs" Click="MenuFournisseurs_Click" />
-        <MenuItem Header="Domaines" Click="MenuDomaines_Click" />
-        <MenuItem Header="Vente" Click="MenuVentes_Click"/>
+        <MenuItem IsEnabled="{Binding IsConnected}" Header="Negosud" Click="MenuAccueil_Click"/>
+        <MenuItem IsEnabled="{Binding IsConnected}" Header="Stock" Click="MenuProduits_Click" />
+        <MenuItem IsEnabled="{Binding IsConnected}" Header="Clients" Click="MenuClients_Click" />
+        <MenuItem IsEnabled="{Binding IsConnected}" Header="Fournisseurs" Click="MenuFournisseurs_Click" />
+        <MenuItem IsEnabled="{Binding IsConnected}" Header="Domaines" Click="MenuDomaines_Click" />
+        <MenuItem IsEnabled="{Binding IsConnected}" Header="Vente" Click="MenuVentes_Click"/>
     </Menu>
 </UserControl>
+    
+     

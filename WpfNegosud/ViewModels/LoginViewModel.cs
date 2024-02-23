@@ -16,9 +16,9 @@ namespace NegosudWpf.ViewModels
         public LoginViewModel()
         { }
 
-        public async void Login(string email, string pwd)
+        public async Task<bool> Login(string email, string pwd)
         {
-            await HttpClientService.Login(email, pwd);
+            return await HttpClientService.Login(email, pwd);
         }
 
         public async void Register(string email, string pwd)

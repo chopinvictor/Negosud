@@ -33,6 +33,8 @@ namespace NegosudWpf.ViewModels
             set { userControl = value; OnPropertyChanged(); }
         }
 
+        public bool IsConnected { get; set; }
+
         //Login
 
         public void ChargerLogin()
@@ -47,6 +49,8 @@ namespace NegosudWpf.ViewModels
         {
             var uc = new ucAccueil();
             UserControl = uc;
+            IsConnected = true;
+            OnPropertyChanged(nameof(IsConnected));
         }
 
 
