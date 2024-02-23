@@ -6,22 +6,21 @@
 
 <h1 class="gold">Liste de nos articles</h1>
 
-<p>Barre de recherche a faire</p>
 
-<table class="tableliste table">
+<table class="tableliste table" id="montableau">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NomProduit)
+                Nom
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PrixProduit)
+                Prix Unitaire
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Type)
+                Type
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Domaine)
+                Domaine
             </th>
             <th></th>
         </tr>
@@ -39,7 +38,7 @@
                 @Html.DisplayFor(modelItem => item.Type.NomType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Domaine.AdresseDomaine)
+                @Html.DisplayFor(modelItem => item.Domaine.NomDomaine)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.Id" class="retirsoulign">Details</a>
@@ -48,3 +47,10 @@
 }
     </tbody>
 </table>
+
+<script>
+    $document.ready(function() {
+        $('#montableau').DataTable();
+    });
+        
+</script>
