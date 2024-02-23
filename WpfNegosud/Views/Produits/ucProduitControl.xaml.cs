@@ -1,13 +1,9 @@
-﻿using Microsoft.VisualBasic;
-using Negosud.Class;
-using NegosudWpf.Services;
+﻿using Negosud.Class;
+using Negosud.Dto;
 using NegosudWpf.ViewModels;
 using System.Collections.ObjectModel;
-using System.Net.Http;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using static System.Net.Mime.MediaTypeNames;
 using Type = Negosud.Class.Type;
 
 namespace NegosudWpf.Views
@@ -31,11 +27,12 @@ namespace NegosudWpf.Views
 
         public int TypeId { get; set; }
 
-
         public ucProduitControl()
         {
             InitializeComponent();
+            CommandesViewModel.Instance.GetAllHistoriques();
         }
+
         private void UpdateProduitValidation_Click(object sender, RoutedEventArgs e)
         {
             var temp = Prix.Text.Replace(".", ",");

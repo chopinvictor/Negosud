@@ -161,7 +161,7 @@ namespace NegosudWpf.ViewModels
             uc.DataContext = new CommandesViewModel();
             ((CommandesViewModel)uc.DataContext).ProduitId = produit.Id;
             ((CommandesViewModel)uc.DataContext).ListeFournisseurs = fournisseursList;
-            ((CommandesViewModel)uc.DataContext).Produit = produit;
+            ((CommandesViewModel)uc.DataContext).ListeSelectedProduits.Add(produit);
             UserControl = uc;
         }
 
@@ -180,7 +180,6 @@ namespace NegosudWpf.ViewModels
             uc.DataContext = new CommandesViewModel();
             UserControl = uc;
         }
-
 
         //public void CreateCommande()
         //{

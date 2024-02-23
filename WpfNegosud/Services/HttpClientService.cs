@@ -3,16 +3,10 @@ using Negosud.Dao;
 using Negosud.Dto;
 using NegosudWpf.Models;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Security.Policy;
 using System.Text;
-using System.Text.Json.Nodes;
-using System.Threading.Tasks;
 using Type = Negosud.Class.Type;
 
 namespace NegosudWpf.Services
@@ -105,6 +99,40 @@ namespace NegosudWpf.Services
                 throw new Exception($"{response.ReasonPhrase}");
             }
         }
+        #endregion
+
+        #region Historique
+
+        public static async Task<ObservableCollection<Historique>> GetAllHistoriques()
+        {
+            string route = $"Historiques";
+            var response = await Client.GetAsync(route);
+            if (response.IsSuccessStatusCode)
+            {
+                string result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ObservableCollection<Historique>>(result)
+                ?? throw new Exception($"Erreur http : {route} ");
+            }
+            throw new Exception(response.ReasonPhrase);
+        }
+
+        public static async Task CreateHistorique(Historique historique)
+        {
+            string route = $"Historiques";
+            string json = JsonConvert.SerializeObject(historique);
+            var buffer = Encoding.UTF8.GetBytes(json);
+
+            var byteContent = new ByteArrayContent(buffer);
+            byteContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            HttpResponseMessage response = await Client.PostAsync(route, byteContent);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception(response.ReasonPhrase);
+            }
+        }
+
         #endregion
 
         #region Produits

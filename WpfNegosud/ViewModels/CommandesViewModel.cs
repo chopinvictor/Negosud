@@ -30,13 +30,17 @@ namespace NegosudWpf.ViewModels
         public ObservableCollection<Fournisseur> ListeFournisseurs { get; set; }
         public ObservableCollection<Client> ListeClients { get; set; }
         public ObservableCollection<ProduitDto> ListeProduits { get; set; }
+        public ObservableCollection<ProduitDto> ListeSelectedProduits { get; set; } = new ObservableCollection<ProduitDto>();
 
         public Transaction Transaction { get; set; } = new Transaction();
+
+        public ObservableCollection<Historique> ListHistoriques { get; set; }
 
         public CommandesViewModel()
         {
             GetAllProduits();
             GetAllClients();
+            GetAllHistoriques();
         }
 
         public async void GetCommande(int commandeId)
@@ -84,5 +88,15 @@ namespace NegosudWpf.ViewModels
             await HttpClientService.CreateTransaction(transaction); 
         }
 
+        public async void CreateHistorique(Historique historique)
+        {
+            await HttpClientService.CreateHistorique(historique);
+        }
+
+        public async void GetAllHistoriques()
+        {
+            ListHistoriques = await HttpClientService.GetAllHistoriques();
+            OnPropertyChanged(nameof(ListHistoriques));
+        }
     }
 }

@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="NegosudWpf.Views.Commandes_.ucCreateCommande"
+﻿<UserControl x:Class="NegosudWpf.Views.Commandes_.ucTest"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NegosudWpf.Views.Commandes_"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="1000">
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -50,7 +50,7 @@
                 <TextBlock Grid.Row="0" Grid.Column="0" Width="200" Text="Nom" />
                 <TextBlock Grid.Row="0" Grid.Column="2" Width="150" Text="Domaine" />
             </Grid>
-
+            
             <TextBlock Grid.Row="0" Grid.Column="2" Text="Fournisseur" />
 
             <StackPanel Grid.Row="0" Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center">
@@ -60,7 +60,7 @@
             </StackPanel>
         </Grid>
 
-        <ListBox ItemsSource="{Binding ListeSelectedProduits}" Grid.Row="2" Grid.Column="1" MinWidth="700">
+        <ListBox ItemsSource="{Binding ListeProduits}" Grid.Row="2" Grid.Column="1" MinWidth="700">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
@@ -93,40 +93,31 @@
                             <TextBlock Grid.Row="0" Grid.Column="0" Width="200" Text="{Binding Nom}" FontWeight="Bold" />
                             <TextBlock Grid.Row="1" Grid.Column="0" Width="200" Text="{Binding Type.NomType}" />
                             <TextBlock Grid.Row="0" Grid.Column="2" Width="200" Text="{Binding Domaine.NomDomaine}" FontWeight="Bold" />
-                            <TextBlock Grid.Row="1" Grid.Column="2" Width="200">
-                                <TextBlock.Text>
-                                    <MultiBinding StringFormat="{}{0} {1}, {2}">
-                                        <Binding Path="Domaine.CodePostalDomaine" />
-                                        <Binding Path="Domaine.VilleDomaine" />
-                                        <Binding Path="Domaine.PaysDomaine"/>
-                                    </MultiBinding>
-                                </TextBlock.Text>
-                            </TextBlock>
+                            <TextBlock Grid.Row="1" Grid.Column="2" Width="200" Text="{Binding Domaine.VilleDomaine}" />
                         </Grid>
 
                         <StackPanel  Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" >
                             <!--<TextBlock Text="Fournisseur" VerticalAlignment="Center" />-->
-                            <ComboBox VerticalAlignment="Center" 
-                                      Width="100" 
-                                      ItemsSource="{Binding DataContext.ListeFournisseurs, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" 
-                                      Name="Fo" 
-                                      DisplayMemberPath="NomFournisseur"
-                                      SelectionChanged="Fo_SelectionChanged"/>
+                            <ComboBox VerticalAlignment="Center" Width="100" ItemsSource="{Binding DataContext.ListeFournisseurs, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" Name="Fo" DisplayMemberPath="NomFournisseur"/>
                         </StackPanel>
 
                         <StackPanel  Grid.Row="0" Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center">
                             <StackPanel Orientation="Vertical" Margin="20 0 10 0">
-                                <TextBox  Width="30" x:Name="Nb" HorizontalAlignment="Left" Text="{Binding NombreCommande}"/>
+                                <!--<TextBlock Text="Nombre" HorizontalAlignment="Left" />-->
+                                <TextBox   Width="30" HorizontalAlignment="Left" Name="Nb" Text="{Binding Transaction.NbProduit}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="40 0 10 0" VerticalAlignment="Center">
-                                <TextBox  Width="30" x:Name="Pu" HorizontalAlignment="Left" Text="{Binding PrixUnitaire}"/>
+                                <!--<TextBlock Text="Prix Unitaire" HorizontalAlignment="Left"/>-->
+                                <TextBox  Width="30" Name="Pu" HorizontalAlignment="Left" Text="{Binding Transaction.Prix}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="50 0 20 0" VerticalAlignment="Center">
-                                <TextBox  Width="30" x:Name="Pt" HorizontalAlignment="Left" />
+                                <!--<TextBlock Text="Sous-Total" HorizontalAlignment="Left"/>-->
+                                <TextBox  Width="30" Name="Pt" HorizontalAlignment="Left" Text="{Binding Transaction.Prix}"/>
                             </StackPanel>
                         </StackPanel>
+
                         <Button Grid.Row="0" Grid.Column="6" Grid.RowSpan="3" Content="Retirer" VerticalAlignment="Center"/>
                     </Grid>
                 </DataTemplate>
@@ -138,18 +129,17 @@
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
-    
+
+
         <!--<Grid  Grid.Row="2" Grid.Column="0" Margin="0 10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Prix Total" VerticalAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,10,0" Width="70" IsReadOnly="True" Name="Pt" Text=""/>
-    </Grid>
-    <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Commander" HorizontalAlignment="Left" VerticalAlignment="Center" Height="20" Width="70"/>-->
-    
-    
-    <Button Grid.Row="2" Grid.Column="3" Content="Commander" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0" Click="Commander_Click"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Prix Total" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,10,0" Width="70" IsReadOnly="True" Name="Pt" Text=""/>
+        </Grid>
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Commander" HorizontalAlignment="Left" VerticalAlignment="Center" Height="20" Width="70"/>-->
+
     </Grid>
 </UserControl>
