@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -111,7 +112,41 @@ namespace NegosudSite.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Edit));
+            }
+            return View(client);
+        }
+
+
+        // Anonymisation
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditAnonyme(int id, [Bind("Id,NewNomClient,NewPrenomClient,NewAdresseClient,NewVilleClient,NewCodePostalClient,NewPaysClient,NewTelephoneClient,NewEmailClient")] Client client)
+        {
+            if (id != client.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(client);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ClientExists(client.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Edit));
             }
             return View(client);
         }
@@ -121,5 +156,7 @@ namespace NegosudSite.Controllers
         {
             return _context.Clients.Any(e => e.Id == id);
         }
+
+
     }
 }
