@@ -19,8 +19,8 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #343a40;
-    color: white;
+    background-color: #fffffa;
+    color: black;
 }
 
 li {
@@ -57,9 +57,15 @@ footer a:visited {
 .gold{
     color:darkgoldenrod;
 }
-.tableliste{
-    color:white;
+.tableliste {
+    color: black;
 }
 .retirsoulign{
     text-decoration: none;
+}
+#tbody{
+    color: black;
+}
+#thead {
+    color: black;
 }

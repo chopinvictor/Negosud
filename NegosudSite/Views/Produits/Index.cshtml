@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1 class="gold">Liste de nos articles</h1>
+<h1 class="gold pb-5">Liste de nos articles</h1>
 
 
 <table class="tableliste table" id="montableau">
@@ -48,9 +48,11 @@
     </tbody>
 </table>
 
-<script>
-    $document.ready(function() {
-        $('#montableau').DataTable();
-    });
-        
-</script>
+@section scripts{
+
+	<script>
+        $(document).ready(function () {
+            $('#montableau').DataTable();
+        });
+	</script>
+}
