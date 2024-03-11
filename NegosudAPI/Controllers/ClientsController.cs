@@ -11,7 +11,6 @@ using Negosud.Context;
 
 namespace NegosudAPI.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ClientsController : ControllerBase

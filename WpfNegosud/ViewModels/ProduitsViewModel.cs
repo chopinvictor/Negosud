@@ -31,19 +31,16 @@ namespace NegosudWpf.ViewModels
         public ObservableCollection<Fournisseur> ListeFournisseurs { get; set; }
         public ObservableCollection<Commande> ListeCommandes { get; set; }
 
-        public ProduitsViewModel()
+        private ProduitsViewModel()
         {
             GetAllProduits();
+            GetAllFournisseurs();
             GetAllDomainesAndTypes();
         }
 
         public async void GetProduit(int produitId)
         {
             Produit = await HttpClientService.GetProduit(produitId);
-            ListeDomaines = await HttpClientService.GetAllDomaines();
-            ListeFournisseurs = await HttpClientService.GetAllFournisseurs();
-            ListeTypes = await HttpClientService.GetAllTypes();
-
             foreach(var dom in ListeDomaines)
             {
                 ComboList.Add(dom.NomDomaine.ToString());
@@ -53,8 +50,6 @@ namespace NegosudWpf.ViewModels
             TypeId = Produit.Type.Id;
             DomaineId = Produit.Domaine.Id;
             OnPropertyChanged(nameof(Produit));
-            //OnPropertyChanged(nameof(ListeDomaines));
-            //OnPropertyChanged(nameof(ListeTypes));
             OnPropertyChanged(nameof(TypeId));
             OnPropertyChanged(nameof(DomaineId));
         }
@@ -71,6 +66,12 @@ namespace NegosudWpf.ViewModels
         {
             ListeProduits = await HttpClientService.GetAllProduits();
             OnPropertyChanged(nameof(ListeProduits));
+        }
+        
+        public async Task GetAllFournisseurs()
+        {
+            ListeFournisseurs = await HttpClientService.GetAllFournisseurs();
+            OnPropertyChanged(nameof(ListeFournisseurs));
         }
 
         public async Task GetAllDomAndType()

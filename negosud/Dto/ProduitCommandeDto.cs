@@ -1,10 +1,4 @@
 ﻿using Negosud.Class;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Type = Negosud.Class.Type;
 
 namespace Negosud.Dto
@@ -21,7 +15,7 @@ namespace Negosud.Dto
 
         public double PrixTotal { get; set; }
 
-        public int FournisseurId { get; set; }
+        public Fournisseur? Fournisseur { get; set; }
 
         public Type? Type { get; set; }
 

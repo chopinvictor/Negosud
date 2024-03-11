@@ -90,15 +90,15 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Grid.Column="0" Width="200" Text="{Binding Nom}" FontWeight="Bold" />
-                            <TextBlock Grid.Row="1" Grid.Column="0" Width="200" Text="{Binding Type.NomType}" />
-                            <TextBlock Grid.Row="0" Grid.Column="2" Width="200" Text="{Binding Domaine.NomDomaine}" FontWeight="Bold" />
+                            <TextBlock Grid.Row="0" Grid.Column="0" Width="200" Text="{Binding Produit.Nom}" FontWeight="Bold" />
+                            <TextBlock Grid.Row="1" Grid.Column="0" Width="200" Text="{Binding Produit.Type.NomType}" />
+                            <TextBlock Grid.Row="0" Grid.Column="2" Width="200" Text="{Binding Produit.Domaine.NomDomaine}" FontWeight="Bold" />
                             <TextBlock Grid.Row="1" Grid.Column="2" Width="200">
                                 <TextBlock.Text>
                                     <MultiBinding StringFormat="{}{0} {1}, {2}">
-                                        <Binding Path="Domaine.CodePostalDomaine" />
-                                        <Binding Path="Domaine.VilleDomaine" />
-                                        <Binding Path="Domaine.PaysDomaine"/>
+                                        <Binding Path="Produit.Domaine.CodePostalDomaine" />
+                                        <Binding Path="Produit.Domaine.VilleDomaine" />
+                                        <Binding Path="Produit.Domaine.PaysDomaine"/>
                                     </MultiBinding>
                                 </TextBlock.Text>
                             </TextBlock>
@@ -111,20 +111,21 @@
                                       ItemsSource="{Binding DataContext.ListeFournisseurs, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" 
                                       Name="Fo" 
                                       DisplayMemberPath="NomFournisseur"
-                                      SelectionChanged="Fo_SelectionChanged"/>
+                                      SelectionChanged="Fo_SelectionChanged"
+                                      SelectedItem="{Binding Produit.Fournisseur}" />
                         </StackPanel>
 
                         <StackPanel  Grid.Row="0" Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center">
                             <StackPanel Orientation="Vertical" Margin="20 0 10 0">
-                                <TextBox  Width="30" x:Name="Nb" HorizontalAlignment="Left" Text="{Binding NombreCommande}"/>
+                                <TextBox  Width="30" x:Name="Nb" HorizontalAlignment="Left" Text="{Binding NombreCommande, UpdateSourceTrigger=PropertyChanged}" />
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="40 0 10 0" VerticalAlignment="Center">
-                                <TextBox  Width="30" x:Name="Pu" HorizontalAlignment="Left" Text="{Binding PrixUnitaire}"/>
+                                <TextBox  Width="30" x:Name="Pu" HorizontalAlignment="Left" Text="{Binding PrixUnitaire, UpdateSourceTrigger=PropertyChanged}"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Margin="50 0 20 0" VerticalAlignment="Center">
-                                <TextBox  Width="30" x:Name="Pt" HorizontalAlignment="Left" />
+                                <TextBlock  Width="30" x:Name="Pt" HorizontalAlignment="Left" Text="{Binding PrixTotal}"/>
                             </StackPanel>
                         </StackPanel>
                         <Button Grid.Row="0" Grid.Column="6" Grid.RowSpan="3" Content="Retirer" VerticalAlignment="Center"/>
@@ -148,8 +149,9 @@
         <TextBox Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,10,0" Width="70" IsReadOnly="True" Name="Pt" Text=""/>
     </Grid>
     <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Commander" HorizontalAlignment="Left" VerticalAlignment="Center" Height="20" Width="70"/>-->
-    
-    
-    <Button Grid.Row="2" Grid.Column="3" Content="Commander" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0" Click="Commander_Click"/>
+
+        <TextBlock  Grid.Row="2" Grid.Column="3" Text="Total de la commande"/>
+        <TextBlock  Grid.Row="2" Grid.Column="3" Text="{Binding PrixTotal}" FontSize="30"/>
+        <Button Grid.Row="2" Grid.Column="3" Content="Commander" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0" Click="Commander_Click"/>
     </Grid>
 </UserControl>

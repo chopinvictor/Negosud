@@ -33,6 +33,11 @@ namespace NegosudWpf.ViewModels
             set { userControl = value; OnPropertyChanged(); }
         }
 
+        public void Refresh(object obj)
+        {
+            OnPropertyChanged(nameof(obj));
+        }
+
         //Login
 
         public void ChargerLogin()
@@ -77,7 +82,7 @@ namespace NegosudWpf.ViewModels
         public async void ChargerProduit(int produitId, int domaineId, int typeId)
         {
             var uc = new ucProduitControl();
-            uc.DataContext = new ProduitsViewModel();
+            uc.DataContext = ProduitsViewModel.Instance;
             ((ProduitsViewModel)uc.DataContext).GetProduit(produitId);
             uc.ProduitId = produitId;
             uc.TypeId = typeId;
@@ -88,14 +93,14 @@ namespace NegosudWpf.ViewModels
         public void ChargerProduitList()
         {
             var uc = new ucProduitsList();
-            uc.DataContext = new ProduitsViewModel();
+            uc.DataContext = ProduitsViewModel.Instance;
             UserControl = uc;
         }
 
         public void CreateProduit()
         {
             var uc = new ucCreateProduit();
-            uc.DataContext = new ProduitsViewModel();
+            uc.DataContext = ProduitsViewModel.Instance;
             ((ProduitsViewModel)uc.DataContext).GetAllDomAndType();
             UserControl = uc;
         }
@@ -155,20 +160,21 @@ namespace NegosudWpf.ViewModels
             UserControl = uc;
         }
 
-        public void ChargerCommandeProduit(ProduitDto produit, ObservableCollection<Fournisseur> fournisseursList)
+        public void ChargerCommandeProduit(ProduitCommandeDto produit)
         {
             var uc = new ucCreateCommande();
-            uc.DataContext = new CommandesViewModel();
+            uc.DataContext = CommandesViewModel.Instance;
             ((CommandesViewModel)uc.DataContext).ProduitId = produit.Id;
-            ((CommandesViewModel)uc.DataContext).ListeFournisseurs = fournisseursList;
-            ((CommandesViewModel)uc.DataContext).ListeSelectedProduits.Add(produit);
+            ((CommandesViewModel)uc.DataContext).ListeSelectedProduits.Add(new ProduitCommandeViewModel(produit));
+
+
             UserControl = uc;
         }
 
         public void ChargerRecap(int commandeId, int produitId)
         {
             var uc = new ucRecapCommande();
-            uc.DataContext = new CommandesViewModel();
+            uc.DataContext = CommandesViewModel.Instance;
             ((CommandesViewModel)uc.DataContext).GetCommande(commandeId);
             ((CommandesViewModel)uc.DataContext).ProduitId = produitId;
             UserControl = uc;
@@ -177,7 +183,7 @@ namespace NegosudWpf.ViewModels
         public void ChargerCreateVente()
         {
             var uc = new ucCreateVente();
-            uc.DataContext = new CommandesViewModel();
+            uc.DataContext = CommandesViewModel.Instance;
             UserControl = uc;
         }
 

@@ -8,7 +8,6 @@ using Negosud.Extensions;
 
 namespace NegosudAPI.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProduitsController : ControllerBase

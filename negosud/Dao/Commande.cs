@@ -14,9 +14,6 @@ namespace Negosud.Class
 
         public int Remise { get; set; } // pourcentage ? exemple : 10 = 10% ?
 
-        [ForeignKey(nameof(Fournisseur))]
-        public int? FournisseurId { get; set; }
-
         [ForeignKey(nameof(Client))]
         public int? ClientId { get; set; }
 

@@ -70,14 +70,13 @@ namespace NegosudAPI
                 {
                     Id = 1,
                     DateCommande = DateTime.Now,
-                    FournisseurId = 1,
                     EstEntreeSortie = true,
                     ListProduits = new List<Produit> { produit1, produit2 },
                     PrixTotal = (produit1.PrixProduit * 6) + (produit2.PrixProduit * 12),
                 });
 
-                context.Transactions.Add(new Transaction() { Id = 1, ProduitId = produit1.Id, NbProduit = 6, Description = "Achat", CommandeId = 1 });
-                context.Transactions.Add(new Transaction() { Id = 2, ProduitId = produit2.Id, NbProduit = 12, Description = "Achat", CommandeId = 1 });
+                context.Transactions.Add(new Transaction() { Id = 1, ProduitId = produit1.Id, NbProduit = 6, Description = "Achat", CommandeId = 1, FournisseurId = 1 });
+                context.Transactions.Add(new Transaction() { Id = 2, ProduitId = produit2.Id, NbProduit = 12, Description = "Achat", CommandeId = 1, FournisseurId = 2 });
 
                 context.SaveChanges();
             }

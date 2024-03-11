@@ -1,7 +1,9 @@
 ﻿using Negosud.Class;
+using Negosud.Dto;
 using NegosudWpf.Services;
 using NegosudWpf.ViewModels;
 using System.ComponentModel.Design;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -19,7 +21,22 @@ namespace NegosudWpf.Views.Commandes_
         
         private void Fo_SelectionChanged(object sender, RoutedEventArgs e)
         {
+            var cb = (ComboBox)sender;
+            ChargerPrixLastCommande((Fournisseur)cb.SelectedItem, (ProduitCommandeViewModel)cb.DataContext);
+        }
 
+        public void ChargerPrixLastCommande(Fournisseur selectedItem, ProduitCommandeViewModel vm)
+        {
+            if (vm != null)
+            {
+                CommandesViewModel.Instance.GetAllHistoriques();
+                var lastCom = CommandesViewModel.Instance.ListHistoriques.Where(h => h.FournisseurId == selectedItem.Id && h.ProduitId == vm.Produit.Id).LastOrDefault();
+                vm.Produit.Fournisseur = selectedItem;
+                if (lastCom != null)
+                    vm.PrixUnitaire = lastCom.PrixAchat;
+                else
+                    vm.PrixUnitaire = 0;
+            }
         }
 
         private void Commander_Click(object sender, RoutedEventArgs e)

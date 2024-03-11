@@ -105,7 +105,7 @@ namespace NegosudWpf.Services
 
         public static async Task<ObservableCollection<Historique>> GetAllHistoriques()
         {
-            string route = $"Historiques";
+            string route = $"api/Historiques";
             var response = await Client.GetAsync(route);
             if (response.IsSuccessStatusCode)
             {
@@ -118,7 +118,7 @@ namespace NegosudWpf.Services
 
         public static async Task CreateHistorique(Historique historique)
         {
-            string route = $"Historiques";
+            string route = $"api/Historiques";
             string json = JsonConvert.SerializeObject(historique);
             var buffer = Encoding.UTF8.GetBytes(json);
 

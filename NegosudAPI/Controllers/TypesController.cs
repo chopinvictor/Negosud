@@ -12,7 +12,6 @@ using Type = Negosud.Class.Type;
 
 namespace NegosudAPI.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TypesController : ControllerBase

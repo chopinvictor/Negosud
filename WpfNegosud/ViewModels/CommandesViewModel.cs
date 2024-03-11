@@ -13,7 +13,29 @@ namespace NegosudWpf.ViewModels
 
         public static CommandesViewModel Instance { get => instance; }
 
+        private CommandesViewModel()
+        {
+            GetAllProduits();
+            GetAllClients();
+            GetAllHistoriques();
+        }
+
         #endregion
+
+        public double PrixTotal
+        {
+            get { return PrixTotal; }
+            set
+            {
+                double tt = 0;
+                foreach (var prod in ListeSelectedProduits)
+                {
+                    tt += prod.PrixTotal;
+                }
+                Commande.PrixTotal = tt;
+                OnPropertyChanged();
+            }
+        }
 
         public Commande Commande { get; set; }
 
@@ -27,21 +49,18 @@ namespace NegosudWpf.ViewModels
 
         public ObservableCollection<Commande> ListeCommandes { get; set; }
 
-        public ObservableCollection<Fournisseur> ListeFournisseurs { get; set; }
-        public ObservableCollection<Client> ListeClients { get; set; }
-        public ObservableCollection<ProduitDto> ListeProduits { get; set; }
-        public ObservableCollection<ProduitDto> ListeSelectedProduits { get; set; } = new ObservableCollection<ProduitDto>();
+        public ObservableCollection<Fournisseur> ListeFournisseurs { get => ProduitsViewModel.Instance.ListeFournisseurs; }
 
-        public Transaction Transaction { get; set; } = new Transaction();
+        public ObservableCollection<Client> ListeClients { get; set; }
+
+        public ObservableCollection<ProduitDto> ListeProduits { get; set; }
+
+        public ObservableCollection<ProduitCommandeViewModel> ListeSelectedProduits { get; set; } = new ObservableCollection<ProduitCommandeViewModel>();
+
+        public ObservableCollection<Transaction> ListeTransaction { get; set; } = new ObservableCollection<Transaction>();
 
         public ObservableCollection<Historique> ListHistoriques { get; set; }
 
-        public CommandesViewModel()
-        {
-            GetAllProduits();
-            GetAllClients();
-            GetAllHistoriques();
-        }
 
         public async void GetCommande(int commandeId)
         {

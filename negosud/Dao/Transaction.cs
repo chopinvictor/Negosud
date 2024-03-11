@@ -23,5 +23,10 @@ namespace Negosud.Class
         public int ProduitId { get; set; }
 
         public virtual Produit? Produit { get; set; }
+
+        [ForeignKey(nameof(Fournisseur))]
+        public int FournisseurId { get; set; }
+
+        public virtual Fournisseur? Fournisseur { get;}
     }
 }
