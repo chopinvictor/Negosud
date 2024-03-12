@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Negosud.Class;
 using Negosud.Context;
@@ -61,7 +55,10 @@ namespace NegosudSite.Controllers
             {
                 _context.Add(client);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+
+                int newClientId = client.Id;
+
+                return RedirectToAction(nameof(Edit), new { id = newClientId });
             }
             return View(client);
         }

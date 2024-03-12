@@ -60,6 +60,9 @@ footer a:visited {
 .tableliste {
     color: black;
 }
+.tableliste a {
+    color: black;
+}
 .retirsoulign{
     text-decoration: none;
 }

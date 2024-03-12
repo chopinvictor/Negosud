@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NegosudConsole\NegosudConsole.csproj" />
     <ProjectReference Include="..\negosud\Negosud.csproj" />
   </ItemGroup>
 
