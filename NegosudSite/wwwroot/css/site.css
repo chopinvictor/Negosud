@@ -72,3 +72,30 @@ footer a:visited {
 #thead {
     color: black;
 }
+.logcadre {
+    width: 50%;
+    color: darkgoldenrod;
+    border: solid;
+    border-radius: 25px;
+    padding: 30px;
+    margin: auto;
+}
+.logcadre input {
+    color: darkgoldenrod;
+    border-color: darkgoldenrod;
+    border-radius: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.logologin img {
+    height: 200px;
+    color: darkgoldenrod;
+    margin: auto;
+}
+.logcadre button {
+    background-color: darkgoldenrod;
+    border-radius: 25px;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+}

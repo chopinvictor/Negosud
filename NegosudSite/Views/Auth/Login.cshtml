@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+
+@model Negosud.Class.Client
+
+@{
+	ViewData["Title"] = "Connexion";
+}
+
+<main class="logcadre text-center">
+
+	<p class="logologin">
+	    <img src="~/images/LogoNegoSudTerre.png"/>
+	</p>
+
+
+	<h1>Connectez-vous</h1>
+
+	<p>
+		<label>Email</label> <br />
+		<input type="text" name="email" />
+	</p>
+	<p>
+		<label>Mot de passe</label><br />
+		<input type="text" name="password" />
+	</p>
+	<p>
+		<button type="submit">Se connecter</button>
+	</p>
+</main
+
+
+
+
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+}
