@@ -13,7 +13,7 @@
             @Html.DisplayNameFor(model => model.PrixProduit)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PrixProduit)
+            @Model.PrixProduit.ToString("N2")
         </dd>
 
         <dt class = "col-sm-2">
