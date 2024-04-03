@@ -14,10 +14,31 @@
 <li>
 	<a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="login">Login Client</a>
 </li>
+
 <li class="nav-item">
     <a class="nav-link text-dark" asp-area="" asp-controller="Clients" asp-action="Create">Enregistrer Client</a>
 </li>
+
 <li class="nav-item">
-    <a class="nav-link text-dark" asp-area="" asp-controller="Clients" asp-action="Edit/1">Mon profil + (anonymisation en cours)</a>
+    <a class="nav-link text-dark" asp-area="" asp-controller="Panier" asp-action="index">Panier</a>
 </li>
+
+
+@* test panier
+
+<h2>Ajouter au Panier</h2>
+
+
+<form asp-action="AjouterAuPanier" method="post">
+    <div class="form-group">
+        <label for="nom">Nom de l'article:</label>
+        <input type="text" class="form-control" id="nom" name="Nom">
+    </div>
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="number" class="form-control" id="nombre" name="Nombre">
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
+ *@
 
