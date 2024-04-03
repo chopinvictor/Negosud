@@ -31,5 +31,28 @@
     </dl>
 </div>
 <div>
-    <a class="retirsoulign" asp-action="Index">Retour</a>
+
+    <form>
+        <label for="quantity" class="fs-3 me-3">Quantité:</label>
+        <select id="quantity" name="quantity" class="me-3">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="12">12</option>
+            <option value="18">18</option>
+            <option value="24">24</option>
+            <option value="30">30</option>
+        </select>
+
+        <input type="submit" value="Ajouter au panier" class="btn btn-primary">
+    </form>
+
+</div>
+
+
+<div class="form-group pt-3">
+    <a href="/Produits" class="btn btn-danger">Retour</a>
 </div>
