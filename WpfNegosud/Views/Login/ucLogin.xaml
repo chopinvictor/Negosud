@@ -49,12 +49,14 @@
                             <RowDefinition Height="18*"/>
                         </Grid.RowDefinitions>
 
+
+                        <Image Source="/asset/LogoNegoSudRouge.png" Grid.Row="0" Grid.ColumnSpan="3" Margin="5,-22,14,5" Grid.RowSpan="3"/>
                         <TextBlock Grid.Row="2" Grid.Column="1" Text="Email" Margin="0,0,0,3" Grid.RowSpan="2" ></TextBlock>
                         <TextBox Grid.Row="3" Grid.Column="1" Margin="0,3,0,7" Grid.RowSpan="3" Name="email" ></TextBox>
 
                         <TextBlock Grid.Row="6" Grid.Column="1" Text="Mot de passe" Margin="0,10,0,3" Grid.RowSpan="3"></TextBlock>
                         <TextBox Grid.Row="8" Grid.Column="1" Margin="0,3,0,15" Grid.RowSpan="3" Name="pwd"></TextBox>
-                                          
+
                         <Button Grid.Row="10" Grid.Column="1" Margin="0,15,0,0" Grid.RowSpan="2" Click="Valider_Click">Valider</Button>
 
                     </Grid>
